@@ -2,6 +2,11 @@
 <ul>
   <form action="/recommendations" method="Get">
     <li><input type="text" name="zipcode"></li>
-   <li><%= select_tag "food_id", options_from_collection_for_select(Food.all, "id", "name"), include_blank: true  %></li>
-  </form>
+    <li><%= select_tag "food_id", options_from_collection_for_select(Food.all, "id", "name"), include_blank: true  %></li>
+    <%# Select a range of price %>
+    <li>Price</li>
+    <li><select id="price" name="price"><option>10-15</option><option>15-20</option>
+    #    <option>20-30</option><option>30+</option></select>
+    </li>
+    <li><%= select_tag "color", options_from_collection_for_select("red" , "id", "name"), include_blank: true  %></li>
 </ul>
