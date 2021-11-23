@@ -8,5 +8,5 @@
     <li><select id="price" name="price"><option>10-15</option><option>15-20</option>
     #    <option>20-30</option><option>30+</option></select>
     </li>
-    <li><%= select_tag "color", options_from_collection_for_select("red" , "id", "name"), include_blank: true  %></li>
+    <li><%= select_tag "color", options_from_collection_for_select(Food.all, "id", "name"), include_blank: true  %></li>
 </ul>
