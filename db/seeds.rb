@@ -2,6 +2,7 @@
 require "open-uri"
 
 Wine.destroy_all
+Food.destroy_all
 
 Wine.create(
   name: "Alois Lageder",
@@ -80,4 +81,17 @@ Wine.create(
   region: "Vallée de la Loire, L'Auvergne",
   description: "Enjoy with a chicken breast stuffed with sundried tomatoes, or even with burritos.",
   price: 2470
+)
+
+
+Food.create(
+  name: "Chicken"
+)
+
+Food.create(
+  name: "Fish"
+)
+
+Food.create(
+  name: "Meat"
 )
