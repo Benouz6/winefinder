@@ -9,7 +9,7 @@ Wine.create(
   color: "White",
   region: "Trentin Haut-Adige",
   description: "Excellent pinot blanc, a perfect wine to take in summer and as an aperitif.",
-  price: 1975
+  price: 19
 )
 
 Wine.create(
@@ -17,7 +17,7 @@ Wine.create(
   color: "White",
   region: "Bourgogne",
   description: "Excellent everywhere, as an aperitif, to accompany a starter or the main course.",
-  price: 1790
+  price: 17
 )
 
 Wine.create(
@@ -25,7 +25,7 @@ Wine.create(
   color: "White",
   region: "Vallée de la Loire, L'Anjou and le Saumurois",
   description: "Gorgeous aromas and dry. Good with oysters",
-  price: 1895
+  price: 18
 )
 
 Wine.create(
@@ -33,7 +33,7 @@ Wine.create(
   color: "White",
   region: "Friuli-Venezia Giulia",
   description: "Perfect for having a nice chilled glass on a hot summer day",
-  price: 1530
+  price: 12
 )
 
 Wine.create(
@@ -41,7 +41,7 @@ Wine.create(
   color: "White",
   region: "Alsace",
   description: "It’s light and fresh tasting and great with fish",
-  price: 1565
+  price: 11
 )
 
 Wine.create(
@@ -49,14 +49,14 @@ Wine.create(
   color: "Red",
   region: "Veneto",
   description: "It goes very well with pasta and shrimp without a heavy sauce",
-  price: 1565
+  price: 21
 )
 Wine.create(
   name: "Apothic Red",
   color: "Red",
   region: "Californie",
   description: "Excellent wine with pork pasta as well as stews and red meats",
-  price: 1535
+  price: 27
 )
 
 Wine.create(
@@ -64,7 +64,7 @@ Wine.create(
   color: "Red",
   region: "Porto/Douro",
   description: "Would go very well with meats on the grill.",
-  price: 1905
+  price: 10
 )
 
 Wine.create(
@@ -72,7 +72,7 @@ Wine.create(
   color: "Red",
   region: "Piedmont",
   description: "A sublime pairing to game terrine or a veal chop.",
-  price: 2835
+  price: 18
 )
 
 Wine.create(
@@ -80,7 +80,7 @@ Wine.create(
   color: "Red",
   region: "Vallée de la Loire, L'Auvergne",
   description: "Enjoy with a chicken breast stuffed with sundried tomatoes, or even with burritos.",
-  price: 2470
+  price: 22
 )
 
 Food.create(
