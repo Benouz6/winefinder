@@ -6,7 +6,7 @@
     <%# Select a range of price %>
     <li>Price</li>
     <li><select id="price" name="price"><option>15</option><option>20</option>
-    #    <option>20-30</option><option>30+</option></select>
+    #    <option>25</option><option>50</option></select>
     </li>
     <li><%= select_tag "color", options_from_collection_for_select(Food.all, "id", "name"), include_blank: true  %></li>
 </ul>

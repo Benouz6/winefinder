@@ -1,10 +1,8 @@
 <h1>Index page</h1>
 
 <ol>
-<% @wines.each do |wine| %>
-  <% if wine.price >15 && wine.price <17 %>
-     <li><%= wine.name %></li>
-     <li><%= wine.price %></li>
+  <% @wines.each do |wine| %>
+    <li><%= wine.name %></li>
+    <li><%= wine.price %></li>
   <% end %>
-<% end %>
 </ol>

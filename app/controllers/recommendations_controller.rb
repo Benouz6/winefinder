@@ -1,13 +1,9 @@
 class RecommendationsController < ApplicationController
   def index
-<<<<<<< HEAD
-    @wines = Wine.all
-=======
-
->>>>>>> master
+    if params[:price].present?
+      @wines = Wine.where("price <= ?", params[:price].to_i)
+    else
+      @wines = Wine.all
+    end
   end
 end
-
-
-# Client.where(
-#   "created_at > ? AND created_at < ?", params[:start_date], params[:end_date])
