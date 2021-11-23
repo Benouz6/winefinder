@@ -1,1 +1,8 @@
 <h1>Index page</h1>
+
+<ol>
+  <% @wines.each do |wine| %>
+    <li><%= wine.name %></li>
+    <li><%= wine.price %></li>
+  <% end %>
+</ol>
