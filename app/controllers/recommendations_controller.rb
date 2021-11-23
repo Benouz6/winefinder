@@ -1,6 +1,10 @@
 class RecommendationsController < ApplicationController
   def index
+<<<<<<< HEAD
     @wines = Wine.all
+=======
+
+>>>>>>> master
   end
 end
 
