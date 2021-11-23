@@ -8,6 +8,12 @@
     <li><select id="price" name="price"><option>15</option><option>20</option>
      <option>25</option><option>50</option></select>
     </li>
-    <li><%= select_tag "color", options_from_collection_for_select(Food.all, "id", "name"), include_blank: true  %></li>
-    <input type="submit" value="Find wine">
+    <li>
+      <select id="color" name="color">
+        <option>White</option>
+        <option>Red</option>
+      </select>
+      <%#= select_tag "color", options_from_collection_for_select(Food.all, "id", "name"), include_blank: true  %>
+    </li>
+  <input type="submit" value="Find wine">
 </ul>
