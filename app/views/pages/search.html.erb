@@ -1,1 +1,7 @@
 <h1>Search page</h1>
+<ul>
+  <form action="/recommendations" method="Get">
+    <li><input type="text" name="zipcode"></li>
+   <li><%= select_tag "food_id", options_from_collection_for_select(Food.all, "id", "name"), include_blank: true  %></li>
+  </form>
+</ul>
