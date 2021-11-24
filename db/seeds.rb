@@ -52,5 +52,4 @@ Food.create(
 Food.create(
   name: "Meat"
 )
-
 puts "Seed created"
