@@ -11,13 +11,4 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
-
-h1, h2 {
-  font-family: $headers-font;
-  color: $DarkBurgundy;
-}
-
-h3, p {
-  font-family: $body-font;
-  color: $Black;
-}
+@import "components/button";
