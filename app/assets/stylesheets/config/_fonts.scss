@@ -5,6 +5,15 @@
 $body-font: "Open sans", "Helvetica", "sans-serif";
 $headers-font: "Helvetica Neue", "Helvetica", "sans-serif";
 
+// applying fonts to h1, h2, h3 and p tags
+
+h1, h2 {
+  font-family: $headers-font;
+}
+
+h3, p {
+  font-family: $body-font;
+}
 
 // To use a font file (.woff) uncomment following lines
 // @font-face {
