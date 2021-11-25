@@ -1,0 +1,19 @@
+<% wine = Wine.new %>
+<% wine.image_url = 'https://www.saq.com/media/catalog/product/1/4/14234094-1_1578554708.png?quality=80&fit=bounds&height=166&width=111&canvas=111:166' %>
+<% wine.name = 'Alceno Monastrell' %>
+
+
+
+
+<div class='d-flex flex-row wine-card-small' style='margin-left:20px; margin-top:20px;'>
+  <div class='img-box d-flex justify-content-center align-items-center'>
+    <img src=<%= wine.image_url %>  alt="bottle image" >
+  </div>
+  <div class='d-flex flex-column' style="width:100%">
+    <div class='d-flex justify-content-center align-items-center title-box' style='width:100%'>
+      <p class="m-0"><%= wine.name %></p>
+    </div>
+  </div>
+
+
+</div>
