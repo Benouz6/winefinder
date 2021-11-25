@@ -12,11 +12,3 @@ class RecommendationsController < ApplicationController
     end
   end
 end
-
-
-# if params[:food_id].present?
-    #   @wines.each do |wine|
-    #     wine.foods.each do |food|
-    #       food.name
-    #     end
-    #   end
