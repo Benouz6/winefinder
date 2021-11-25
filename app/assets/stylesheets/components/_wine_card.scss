@@ -12,15 +12,21 @@
   padding-bottom: 7px;
   background-color: $Grey;
   border-radius: 10px 0px 0px 10px;
+
+  > img {
+    height: 160px;
+  }
 }
 
-.wine-card-small > .img-box > img {
-  height: 160px;
-}
 
 .wine-card-small .title-box {
   background-color: $Burgundy;
-  color: $LightPink;
   border-radius: 0px 10px 0px 0px;
   padding: 5px;
+
+  > p {
+    color: $LightPink;
+    font-size: 18.5px;
+    font-weight: bold;
+  }
 }
