@@ -56,8 +56,6 @@ ActiveRecord::Schema.define(version: 2021_11_25_200345) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "saq_id"
-    t.float "latitude"
-    t.float "longitude"
     t.string "origin"
     t.string "image_url"
     t.integer "rating"
