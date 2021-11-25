@@ -11,3 +11,11 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+h1, h2 {
+  font-family: $headers-font;
+}
+
+h3, p {
+  font-family: $body-font;
+}
