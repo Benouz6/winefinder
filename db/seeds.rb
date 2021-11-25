@@ -10,6 +10,10 @@ def fetch_description(link)
   html_doc.search("[data-th]")[3].text.strip
 end
 
+Food.create!(name: "Chicken")
+Food.create!(name: "Fish")
+Food.create!(name: "Meat")
+
 page = 1
 colors = ["red", "white"] * 4
 
@@ -41,16 +45,13 @@ colors.each do |color|
   page += 50
 end
 
-Food.create(
-  name: "Chicken"
-)
+wines = Wine.all
 
-Food.create(
-  name: "Fish"
-)
-
-Food.create(
-  name: "Meat"
-)
-
+wines.each do |wine|
+  foods = Food.all
+  FoodPairing.create!(
+    food: foods.sample,
+    wine: wine
+  )
+end
 puts "Seed created"
