@@ -4,9 +4,9 @@
   <% @wines.each do |wine| %>
     <li><%= wine.name %>
         <%= wine.price %>
-        <%= wine.color %></li>
+        <%= wine.color %>
+        <% wine.foods.each do |food| %>
+          <%= food.name %>
+        <% end %></li>
   <% end %>
 </ol>
-<% @foods.each do |food| %>
-  <%= food.name %>
-<% end %>
