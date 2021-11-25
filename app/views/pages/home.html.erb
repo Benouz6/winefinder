@@ -1,5 +1,12 @@
-<div class="container">
-    <h1>Pages#home</h1>
-    <p>Find me in app/views/pages/home.html.erb</p>
-    <%= link_to "Learn more", pages_search_path, class: "btn btn-secondary" %>
+<div class="banner">
+  <%= image_tag "homepage_banner.jpg", class: 'img-fluid'%>
+  <div class="container">
+    <div class="inside">
+      <h1>WineFinder</h1>
+      <h2>Let’s find the perfect wine for your occasion.</h2>
+      <%= link_to(pages_search_path, class: "btn btn-ghost btn-lg") do %>
+        Find Wine
+      <% end %>
+    </div>
+  </div>
 </div>
