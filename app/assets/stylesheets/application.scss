@@ -11,3 +11,11 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+h1, h2 {
+  color: $DarkBurgundy;
+}
+
+h3, p {
+  color: $Black;
+}
