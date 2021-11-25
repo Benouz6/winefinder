@@ -9,18 +9,10 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
-
   </head>
 
   <body>
-    <!-- Image and text -->
-    <nav id="nav-custom" class="navbar navbar-light bg-light">
-      <%= link_to(root_path, class: 'navbar-brand', id: 'navbar-header') do %>
-        <%= image_tag "winefinder_logo.png", class: 'nav-bar' %>
-        WineFinder
-      <% end %>
-      <hr>
-    </nav>
+  <%= render "shared/navbar"%>
     <%= yield %>
   </body>
 </html>
