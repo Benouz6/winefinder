@@ -2,8 +2,11 @@
 
 <ol>
   <% @wines.each do |wine| %>
-    <li><%= wine.name %></li>
-    <li><%= wine.price %></li>
-    <li><%= wine.color %></li>
+    <li><%= wine.name %>
+        <%= wine.price %>
+        <%= wine.color %></li>
   <% end %>
 </ol>
+<% @foods.each do |food| %>
+  <%= food.name %>
+<% end %>
