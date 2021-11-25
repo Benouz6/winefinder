@@ -2,11 +2,17 @@
 
 <ol>
   <% @recommendations.each do |wine| %>
+<<<<<<< HEAD
     <li><%= wine.name %></li>
       <ul>
         <li>Price: <%= wine.price %></li>
         <li>Color: <%= wine.color %></li>
         <li>Rating: <%= wine.rating %></li>
+=======
+    <li><%= wine.name %>
+        <%= wine.price %>
+        <%= wine.color %>
+>>>>>>> master
         <% wine.foods.each do |food| %>
         <li>Food: <%= food.name %></li>
       </ul>
