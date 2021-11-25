@@ -13,12 +13,13 @@
   </head>
 
   <body>
-      <!-- Image and text -->
-    <nav class="navbar navbar-light bg-light">
-      <a id='navbar-header' class="navbar-brand" href="#">
-      <%= image_tag "winefinder_logo.png", class: 'nav-bar' %>
+    <!-- Image and text -->
+    <nav id="nav-custom" class="navbar navbar-light bg-light">
+      <%= link_to(root_path, class: 'navbar-brand', id: 'navbar-header') do %>
+        <%= image_tag "winefinder_logo.png", class: 'nav-bar' %>
         WineFinder
-      </a>
+      <% end %>
+      <hr>
     </nav>
     <%= yield %>
   </body>

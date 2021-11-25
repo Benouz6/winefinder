@@ -2,3 +2,14 @@
   height: 30px;
   width: 30px;
 }
+
+#nav-custom {
+  background-color: $NavPink !important;
+  display: flex;
+}
+
+hr {
+  flex-grow: 1;
+  border: solid 1px;
+  color: $DarkBurgundy;
+}
