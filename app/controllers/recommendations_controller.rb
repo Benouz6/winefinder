@@ -1,7 +1,7 @@
 class RecommendationsController < ApplicationController
   def index
     if params[:color].present?
-      @wines = Wine.where(color: params[:color].downcase) &&
+      @wines = Wine.where(color: params[:color].downcase)
       @food_pairings = FoodPairing.where(food_id: params[:food_id])
       @wines = @food_pairings.map do |fp|
         fp.wine
