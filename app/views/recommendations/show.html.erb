@@ -1,0 +1,16 @@
+<h1><%= @wine.name %></h1>
+
+
+  <li> <%= @wine.name %> /li>
+      <ul>
+        <li>Price: <%= @wine.price %></li>
+        <li>Color: <%= @wine.color %></li>
+        <li>Rating: <%= @wine.rating %></li>
+        <% @wine.foods.each do |food| %>
+        <li>Food: <%= food.name %></li>
+      </ul>
+
+  <% end %>
+  <%= link_to(map_path, class: "btn btn-flat") do %>
+      Where is it
+    <% end %>

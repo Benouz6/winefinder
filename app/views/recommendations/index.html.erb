@@ -1,10 +1,10 @@
 <h1>Index page</h1>
 
 <ol>
-  <% @display.each do |wine| %>
-    <li><%= wine.name %></li>
+  <% @top_five.each do |wine| %>
+  <li><%= link_to wine.name, recommendation_path(wine) %></li>
       <ul>
-        <li>Price: <%= wine.price %></li>
+        <li>Price: <%= humanized_money_with_symbol(wine.price) %></li>
         <li>Color: <%= wine.color %></li>
         <li>Rating: <%= wine.rating %></li>
         <% wine.foods.each do |food| %>
