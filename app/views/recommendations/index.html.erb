@@ -1,7 +1,7 @@
 <h1>Index page</h1>
 
 <ol>
-  <% @recommendations.each do |wine| %>
+  <% @display.each do |wine| %>
     <li><%= wine.name %></li>
       <ul>
         <li>Price: <%= wine.price %></li>
