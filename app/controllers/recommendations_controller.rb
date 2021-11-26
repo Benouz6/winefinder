@@ -12,7 +12,7 @@ class RecommendationsController < ApplicationController
         fp.wine
       end
       @recommendations = @wines.select { |wine| wine.color == params[:color].downcase && wine.price.cents <= params[:price].to_i * 100 }
-      @display = @recommendations.first(5)
+      @display = @recommendations.order("rating")
     else
       @wines = Wine.all
     end
