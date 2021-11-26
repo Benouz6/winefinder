@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_26_153015) do
+ActiveRecord::Schema.define(version: 2021_11_26_211336) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 2021_11_26_153015) do
     t.bigint "wine_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "qty"
+    t.string "address"
     t.index ["wine_id"], name: "index_availabilities_on_wine_id"
   end
 
@@ -46,6 +48,15 @@ ActiveRecord::Schema.define(version: 2021_11_26_153015) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["store_id"], name: "index_inventories_on_store_id"
     t.index ["wine_id"], name: "index_inventories_on_wine_id"
+  end
+
+  create_table "live_availabilities", force: :cascade do |t|
+    t.integer "qty"
+    t.string "address"
+    t.bigint "wine_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["wine_id"], name: "index_live_availabilities_on_wine_id"
   end
 
   create_table "stores", force: :cascade do |t|
@@ -75,4 +86,5 @@ ActiveRecord::Schema.define(version: 2021_11_26_153015) do
   add_foreign_key "food_pairings", "wines"
   add_foreign_key "inventories", "stores"
   add_foreign_key "inventories", "wines"
+  add_foreign_key "live_availabilities", "wines"
 end

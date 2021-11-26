@@ -7,18 +7,34 @@ class RecommendationsController < ApplicationController
         fp.wine
       end
       @recommendations = @wines.select { |wine| wine.color == params[:color].downcase && wine.price.cents <= params[:price].to_i * 100 }
-      @wines = Wine.all
+      @recommendations.first(5).each { |wine| create_live_availibilities(wine) }
       # raise
     else
       @wines = Wine.all
     end
   end
+
+  def create_live_availibilities(wine)
+    wine.availabilities.each do |av|
+      list = JSON.parse(av.json_file)['list']
+      list.each do |av|
+        LiveAvailability.create!({
+          wine: wine,
+          qty: av['qty'].to_i,
+          address: av['address'].first#.match(/\"(.+)\"/)[1]
+          })
+        raise
+      end
+    end
+
+    avails_hash = JSON.parse(wine.availabilities.first.json_file)
+    raise
+    avails.map do |avail|
+      {
+        address: avail['address1'],
+        qty: avail['qty'].to_i,
+        json_file: avails_json
+      }
+    end
+  end
 end
-
-
-# if params[:food_id].present?
-    #   @wines.each do |wine|
-    #     wine.foods.each do |food|
-    #       food.name
-    #     end
-    #   end

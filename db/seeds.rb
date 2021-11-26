@@ -1,7 +1,6 @@
-require "nokogiri"
-require "open-uri"
 require_relative "scrapers/scrape_wines"
 
+Availability.destroy_all
 FoodPairing.destroy_all
 Wine.destroy_all
 Food.destroy_all

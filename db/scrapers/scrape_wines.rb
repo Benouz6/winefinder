@@ -1,3 +1,11 @@
+require "nokogiri"
+require "open-uri"
+
+def scrape_availibilities(id)
+  url = "https://www.saq.com/en/store/locator/ajaxlist/context/product/id/#{id}?loaded=0&_=1637944648926"
+  URI.open(url, { 'x-requested-with' => 'XMLHttpRequest' }).read
+end
+
 def fetch_description(link)
   html_file = URI.open(link).read
   html_doc = Nokogiri::HTML(html_file)
@@ -17,17 +25,24 @@ def scrape_wines
       name = element.search(".product-item-name").text.strip.gsub(/\s+/, " ")
       price_float = element.search(".price")[0].text.strip.gsub(/[[:space:]]\$/, "").gsub(",", "").gsub("$", "").to_f
       price = (price_float*100).to_i
+
       saq_id = element.search("[data-product-id]").attribute("data-product-id").value
+
       temp_origin = element.search(".product-item-identity-format span").text.strip.gsub(/[|]/, "").split(/\b/)
       origin = temp_origin.reject(&:blank?).last
-      rating = html_doc.search(".rating-result").attribute("title").value.match(/\d+/)[0].to_i
+
+      begin
+        rating = element.search(".rating-result").attribute("title").value.match(/\d+/)[0].to_i
+      rescue
+        rating = 0
+      end
 
       image_url = element.search(".product-image-photo").attribute('src').value
 
       link = element.search(".product-item-link").attribute('href').value
       description = fetch_description(link)
 
-      Wine.create!(
+      wine = Wine.create!(
         name: name,
         price_cents: price,
         saq_id: saq_id,
@@ -37,6 +52,10 @@ def scrape_wines
         image_url: image_url,
         rating: rating
       )
+
+      json_file = scrape_availibilities(saq_id)
+
+      Availability.create!(wine: wine, json_file: json_file)
     end
     page += 50
   end
