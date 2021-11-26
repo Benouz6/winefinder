@@ -1,5 +1,28 @@
-<div class="container">
-    <h1>Pages#home</h1>
-    <p>Find me in app/views/pages/home.html.erb</p>
-    <%= link_to "Learn more", pages_search_path, class: "btn btn-secondary" %>
+<div class="banner">
+  <div class="container">
+    <h1>WineFinder</h1>
+    <p>Let’s find the perfect wine for your occasion.</p>
+    <%= link_to(pages_search_path, class: "btn btn-flat") do %>
+      Find Wine
+    <% end %>
+  </div>
+</div>
+
+<h2 class="subtitle fancy"><span>Discover</span></h2>
+
+<div class="cards">
+  <div class="card-product">
+    <%= image_tag "article_image_1.jpg" %>
+    <div class="card-product-infos">
+      <h2>Rosé for brunch</h2>
+      <p>What is the best time of day to enjoy rosé? We suggest its best to toast with a glass of rosé over brunch...</p>
+    </div>
+  </div>
+  <div id="card-2" class="card-product">
+    <%= image_tag "article_image_2.jpg" %>
+    <div class="card-product-infos">
+      <h2>The art of pairings</h2>
+      <p>When getting ready to sit down for a meal, choosing the right wine can really make your culinary creations shine...</p>
+    </div>
+  </div>
 </div>

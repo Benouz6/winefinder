@@ -20,16 +20,15 @@ def scrape_wines
       saq_id = element.search("[data-product-id]").attribute("data-product-id").value
       temp_origin = element.search(".product-item-identity-format span").text.strip.gsub(/[|]/, "").split(/\b/)
       origin = temp_origin.reject(&:blank?).last
-      rating = html_doc.search(".rating-result").attribute("title").value.match(/\d+/)[0].to_i
-
+      rating_result = element.search(".rating-result").attribute("title")
+      rating = rating_result.nil? ? 0 : rating_result.value.match(/\d+/)[0].to_i
       image_url = element.search(".product-image-photo").attribute('src').value
-
       link = element.search(".product-item-link").attribute('href').value
       description = fetch_description(link)
 
       Wine.create!(
         name: name,
-        price: price,
+        price_cents: price,
         saq_id: saq_id,
         region: origin,
         color: color,
