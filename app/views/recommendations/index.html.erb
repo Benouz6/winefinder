@@ -8,5 +8,8 @@
         <% wine.foods.each do |food| %>
           <%= food.name %>
         <% end %></li>
+        <% wine.live_availabilities.first(3).each do |av| %>
+          <p>Address: <%= av.address %> Qty: <span><%= av.qty %></span></p>
+        <% end %>
   <% end %>
 </ol>

@@ -17,24 +17,14 @@ class RecommendationsController < ApplicationController
   def create_live_availibilities(wine)
     wine.availabilities.each do |av|
       list = JSON.parse(av.json_file)['list']
+
       list.each do |av|
         LiveAvailability.create!({
           wine: wine,
           qty: av['qty'].to_i,
-          address: av['address'].first#.match(/\"(.+)\"/)[1]
+          address: av['address'].first
           })
-        raise
       end
-    end
-
-    avails_hash = JSON.parse(wine.availabilities.first.json_file)
-    raise
-    avails.map do |avail|
-      {
-        address: avail['address1'],
-        qty: avail['qty'].to_i,
-        json_file: avails_json
-      }
     end
   end
 end
