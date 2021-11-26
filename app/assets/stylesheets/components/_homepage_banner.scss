@@ -1,0 +1,25 @@
+.banner {
+  background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), asset-url('homepage_banner.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: 150px 0;
+}
+
+.banner h1 {
+  margin: 0;
+  // text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  // font-size: 32px;
+  font-weight: bold;
+  color: $White;
+}
+
+.banner p {
+  font-size: 20px;
+  // opacity: .7;
+  // text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  color: $White;
+}
+
+.btn {
+  color: $White;
+}

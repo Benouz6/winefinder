@@ -1,5 +1,11 @@
-<div class="container">
-    <h1>Pages#home</h1>
-    <p>Find me in app/views/pages/home.html.erb</p>
-    <%= link_to "Learn more", pages_search_path, class: "btn btn-secondary" %>
+<div class="banner">
+  <div class="container">
+    <h1>WineFinder</h1>
+    <p>Let’s find the perfect wine for your occasion.</p>
+    <%= link_to(pages_search_path, class: "btn btn-flat") do %>
+      Find Wine
+    <% end %>
+  </div>
 </div>
+
+<%# style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4));" %>
