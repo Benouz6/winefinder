@@ -1,15 +1,18 @@
 <div class="container">
 <h1 style="text-align:center">Tell us a bit more about what you’re looking for?</h1>
   <form action="/recommendations" method="Get">
-    <%# <li><input type="text" name="zipcode"></li> %>
     <label>What will you have to eat?</label>
     <%= select_tag "food_id", options_from_collection_for_select(Food.all, "id", "name"), include_blank: false, selected: Food.first, class:"form-control" %>
   <div class="form-group">
-    <label for="exampleFormControlSelect1">What's your budget?</label>
+    <label for="exampleFormControlSelect1">What's your maximum budget?</label>
     <select id="price" name="price" class="form-control" id="exampleFormControlSelect1">
       <option>15</option>
       <option>20</option>
       <option>25</option>
+      <option>30</option>
+      <option>35</option>
+      <option>40</option>
+      <option>45</option>
       <option>50</option>
     </select>
     <label for="exampleFormControlSelect1">What wine color are you looking for?</label>
@@ -22,15 +25,3 @@
     <input class="btn btn-secondary" type="submit" value="Search">
   </div>
   </div>
-    <%# Select a range of price %>
-    <%# <li>Price</li>
-    <li><select id="price" name="price"><option>15</option><option>20</option>
-     <option>25</option><option>50</option></select>
-    </li>
-    <li> %>
-      <%# <select id="color" name="color">
-        <option>White</option>
-        <option>Red</option>
-      </select> %>
-      <%#= select_tag "color", options_from_collection_for_select(Food.all, "id", "name"), include_blank: true  %>
-    <%# </li> %>
