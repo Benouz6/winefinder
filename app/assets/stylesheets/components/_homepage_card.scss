@@ -32,6 +32,38 @@
   padding: 16px;
 }
 
-#title {
+.cards {
+  padding: 12px;
+}
+
+.fancy {
+  line-height: 1.5;
   text-align: center;
+}
+.fancy span {
+  display: inline-block;
+  position: relative;
+}
+.fancy span:before,
+.fancy span:after {
+  content: "";
+  position: absolute;
+  border: solid 1px;
+  color: $DarkBurgundy;
+  top: 0;
+  width: 108px;
+}
+.fancy span:before {
+  right: 100%;
+  margin-right: 15px;
+  margin-top: 25px;
+}
+.fancy span:after {
+  left: 100%;
+  margin-left: 15px;
+  margin-top: 25px;
+}
+
+#card-2 {
+  margin-top: 12px;
 }
