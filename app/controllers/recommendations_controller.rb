@@ -6,7 +6,9 @@ class RecommendationsController < ApplicationController
       @wines = @food_pairings.map do |fp|
         fp.wine
       end
-      @recommendations = @wines.select { |wine| wine.color == params[:color].downcase && wine.price <= params[:price].to_i * 100 }
+      @recommendations = @wines.select { |wine| wine.color == params[:color].downcase && wine.price.cents <= params[:price].to_i * 100 }
+      @wines = Wine.all
+      # raise
     else
       @wines = Wine.all
     end
