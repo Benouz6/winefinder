@@ -1,9 +1,8 @@
 <h1><%= @wine.name %></h1>
 
 
-  <li> <%= @wine.name %> /li>
       <ul>
-        <li>Price: <%= @wine.price %></li>
+        <li>Price: <%= humanized_money_with_symbol(@wine.price)  %></li>
         <li>Color: <%= @wine.color %></li>
         <li>Rating: <%= @wine.rating %></li>
         <% @wine.foods.each do |food| %>
@@ -11,4 +10,6 @@
       </ul>
 
   <% end %>
-  <%= link_to "Where is it?", map_path %>
+  <%= link_to(map_path, class: "btn btn-flat") do %>
+      Where is it
+    <% end %>
