@@ -2,7 +2,7 @@
 
 <ol>
   <% @display.each do |wine| %>
-    <li><%= wine.name %></li>
+  <li><%= link_to wine.name, recommendation_path(wine) %></li>
       <ul>
         <li>Price: <%= wine.price %></li>
         <li>Color: <%= wine.color %></li>

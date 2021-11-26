@@ -1,4 +1,9 @@
 class RecommendationsController < ApplicationController
+
+  def show
+    @wine = Wine.find(params[:id])
+  end
+
   def index
     if params[:color].present?
       @wines = Wine.where(color: params[:color].downcase)
