@@ -4,7 +4,7 @@
 <% wine.color = 'red' %>
 <% wine.region = 'France, toulouse blablabla' %>
 <% wine.price = 25 %>
-
+<% wine.rating = 80 %>
 
 <div class='d-flex flex-column wine-cards' >
 
@@ -20,7 +20,7 @@
 
       <%# title %>
       <div class='d-flex justify-content-center align-items-center title-box' style='width:100%'>
-        <p class="m-0" style="color:$LightPink;"><%= wine.name %></p>
+        <p><%= wine.name %></p>
       </div>
 
       <%# Information %>
@@ -39,15 +39,33 @@
       </div>
 
       <%# Price & rating %>
-      <div class='d-flex flex-row' style='width:100%; height:37px;'>
+      <div class='d-flex flex-row' style='width:100%;'>
         <%# Price %>
-        <div class='rating d-flex justify-content-center align-items-center'>
-          <p><%= wine.price %></p>
+        <div class='price d-flex justify-content-center align-items-center'>
+          <p><%= "$#{wine.price}" %></p>
         </div>
         <%# rating %>
-        <div class='price d-flex justify-content-center align-items-center'>
+        <div class='d-flex justify-content-center align-items-center flex-grow-1'>
+          <% rating = 5.00 * wine.rating / 100 %>
+          <% remainder = rating % 1 %>
 
+          <% if remainder < 0.5 %>
+            <% rating -= remainder %>
+          <% else %>
+            <% rating += 1 - remainder %>
+          <% end %>
+
+          <% yellow_stars = rating.to_i %>
+          <% yellow_stars.times do%>
+            <i class="fas fa-star star_yellow"></i>
+          <% end %>
+
+          <% grey_stars = 5-rating.to_i %>
+          <% grey_stars.times do%>
+            <i class="fas fa-star star_grey"></i>
+          <% end %>
         </div>
+
       </div>
 
     </div>

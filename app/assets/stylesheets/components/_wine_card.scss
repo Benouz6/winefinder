@@ -2,6 +2,10 @@
 .wine-cards {
   justify-content: space-between;
   padding: 17px;
+
+  p {
+    margin:0px;
+  }
 }
 
 // small cards
@@ -40,24 +44,21 @@
 
 .wine-card-small .price {
   background-color:$LightBurgundy;
+  width: 61px;
+  height: 37px;
   p {
-    color:$LightPink;
+    color: $LightPink;
+    font-size: 21.6px;
   }
 }
-
-
 
 
 // shared
 .wine-info {
   font-size: 14.4px;
   font-weight: bold;
-  width: 100%;
+  flex-grow: 1;
   padding: 9px;
-
-  p {
-    margin: 0px;
-  }
 
   .tag {
     margin-right: 2px;
@@ -66,4 +67,18 @@
   .content {
     color: $DarkGrey;
   }
+}
+
+.star_yellow,
+.star_grey {
+  margin: 1px;
+  font-size: 19px;
+}
+
+.star_yellow {
+  color: $Yellow;
+}
+
+.star_grey {
+  color: $DarkGrey;
 }
