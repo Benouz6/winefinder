@@ -35,16 +35,21 @@
   border-radius: 0px 10px 0px 0px;
   padding: 4.5px;
 
+
   > p {
     color: $LightPink;
     font-size: 18px;
     font-weight: bold;
+    white-space: nowrap;
+    width: 185px;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 
 .wine-card-small .price {
   background-color:$LightBurgundy;
-  width: 61px;
+  width: 80px;
   height: 37px;
   p {
     color: $LightPink;
