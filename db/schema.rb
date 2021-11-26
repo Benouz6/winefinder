@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_26_000056) do
+ActiveRecord::Schema.define(version: 2021_11_26_153015) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "availabilities", force: :cascade do |t|
+    t.jsonb "json_file"
+    t.bigint "wine_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["wine_id"], name: "index_availabilities_on_wine_id"
+  end
 
   create_table "food_pairings", force: :cascade do |t|
     t.bigint "food_id", null: false
@@ -62,6 +70,7 @@ ActiveRecord::Schema.define(version: 2021_11_26_000056) do
     t.string "price_currency", default: "CAD", null: false
   end
 
+  add_foreign_key "availabilities", "wines"
   add_foreign_key "food_pairings", "foods"
   add_foreign_key "food_pairings", "wines"
   add_foreign_key "inventories", "stores"
