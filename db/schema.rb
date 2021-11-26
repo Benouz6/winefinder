@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_26_000056) do
+ActiveRecord::Schema.define(version: 2021_11_26_193546) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 2021_11_26_000056) do
     t.integer "saq_id"
     t.string "origin"
     t.string "image_url"
-    t.integer "rating"
+    t.integer "rating", default: 0, null: false
     t.integer "price_cents", default: 0, null: false
     t.string "price_currency", default: "CAD", null: false
   end
