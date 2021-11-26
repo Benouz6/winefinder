@@ -1,15 +1,22 @@
-<h1>Index page</h1>
-
+<div class="container">
+  <h1 style="text-align:center">Here's what we found:</h1>
+  <div id="button-form">
+   <%= link_to(pages_search_path, class: "btn btn-flat") do %>
+      Edit Search
+    <% end %>
+  </div><br>
 <ol>
   <% @top_five.each do |wine| %>
-  <li><%= link_to wine.name, recommendation_path(wine) %></li>
+  <li><strong><%= link_to wine.name, recommendation_path(wine), class:"wine-name" %></strong></li>
       <ul>
         <li>Price: <%= humanized_money_with_symbol(wine.price) %></li>
         <li>Color: <%= wine.color %></li>
         <li>Rating: <%= wine.rating %></li>
+        <li>Region: <%= wine.region %></li>
         <% wine.foods.each do |food| %>
         <li>Food: <%= food.name %></li>
       </ul>
         <% end %>
   <% end %>
 </ol>
+</div>
