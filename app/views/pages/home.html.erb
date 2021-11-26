@@ -1,12 +1,10 @@
-<div class="banner">
-  <%= image_tag "homepage_banner.jpg", class: 'img-fluid'%>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
   <div class="container">
-    <div class="inside">
-      <h1>WineFinder</h1>
-      <h2>Let’s find the perfect wine for your occasion.</h2>
-      <%= link_to(pages_search_path, class: "btn btn-ghost btn-lg") do %>
-        Find Wine
-      <% end %>
-    </div>
+    <h1>WineFinder</h1>
+    <p>Let’s find the perfect wine for your occasion.</p>
+    <%= link_to(pages_search_path, class: "btn btn-flat") do %>
+      Find Wine
+    <% end %>
+    <%# <a class="btn btn-flat" href="#">Find Wine</a> %>
   </div>
 </div>
