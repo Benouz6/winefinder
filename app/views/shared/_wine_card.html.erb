@@ -1,19 +1,57 @@
 <% wine = Wine.new %>
 <% wine.image_url = 'https://www.saq.com/media/catalog/product/1/4/14234094-1_1578554708.png?quality=80&fit=bounds&height=166&width=111&canvas=111:166' %>
 <% wine.name = 'Alceno Monastrell' %>
+<% wine.color = 'red' %>
+<% wine.region = 'France, toulouse blablabla' %>
+<% wine.price = 25 %>
 
 
+<div class='d-flex flex-column wine-cards' >
 
+  <div class='d-flex flex-row wine-card-small'>
 
-<div class='d-flex flex-row wine-card-small' style='margin-left:20px; margin-top:20px;'>
-  <div class='img-box d-flex justify-content-center align-items-center'>
-    <img src=<%= wine.image_url %>  alt="bottle image" >
-  </div>
-  <div class='d-flex flex-column' style="width:100%">
-    <div class='d-flex justify-content-center align-items-center title-box' style='width:100%'>
-      <p class="m-0" style="color:$LightPink;"><%= wine.name %></p>
+    <%# Image %>
+    <div class='img-box d-flex justify-content-center align-items-center'>
+      <img src=<%= wine.image_url %>  alt="bottle image" >
     </div>
-  </div>
 
+    <%# Attributes %>
+    <div class='d-flex flex-column' style="width:100%">
+
+      <%# title %>
+      <div class='d-flex justify-content-center align-items-center title-box' style='width:100%'>
+        <p class="m-0" style="color:$LightPink;"><%= wine.name %></p>
+      </div>
+
+      <%# Information %>
+      <div class='d-flex flex-column wine-info'>
+        <%# color %>
+        <div class='d-flex flex-row'>
+          <p class='tag'>Color:</p>
+          <p class='content'><%= wine.color %></p>
+        </div>
+
+        <%# Region %>
+        <div class='d-flex flex-row'>
+          <p class='tag'>Region:</p>
+          <p class='content'><%= wine.region %></p>
+        </div>
+      </div>
+
+      <%# Price & rating %>
+      <div class='d-flex flex-row' style='width:100%; height:37px;'>
+        <%# Price %>
+        <div class='rating d-flex justify-content-center align-items-center'>
+          <p><%= wine.price %></p>
+        </div>
+        <%# rating %>
+        <div class='price d-flex justify-content-center align-items-center'>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
 
 </div>
