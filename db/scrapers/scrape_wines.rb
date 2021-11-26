@@ -29,7 +29,7 @@ def scrape_wines
 
       Wine.create!(
         name: name,
-        price: price,
+        price_cents: price,
         saq_id: saq_id,
         region: origin,
         color: color,
