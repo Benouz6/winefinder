@@ -21,7 +21,6 @@ class RecommendationsController < ApplicationController
     end
 
     def map
-
     end
   end
 end
