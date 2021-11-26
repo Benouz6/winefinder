@@ -1,12 +1,15 @@
 <h1>Index page</h1>
 
 <ol>
-  <% @recommendations.each do |wine| %>
-    <li><%= wine.name %>
-        <%= wine.price %>
-        <%= wine.color %>
+  <% @display.each do |wine| %>
+    <li><%= wine.name %></li>
+      <ul>
+        <li>Price: <%= wine.price %></li>
+        <li>Color: <%= wine.color %></li>
+        <li>Rating: <%= wine.rating %></li>
         <% wine.foods.each do |food| %>
-          <%= food.name %>
-        <% end %></li>
+        <li>Food: <%= food.name %></li>
+      </ul>
+        <% end %>
   <% end %>
 </ol>
