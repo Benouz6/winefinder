@@ -16,5 +16,9 @@ class RecommendationsController < ApplicationController
     else
       @wines = Wine.all
     end
+
+    def map
+
+    end
   end
 end
