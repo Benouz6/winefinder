@@ -1,54 +1,34 @@
 <%# Temporary grape variety and alcohol level values %>
 <% wine.grapes = 'some fancy schmancy grapes' %>
 <% wine.alcohol = 14 %>
+<% wine.origin = 'France, Sud-Ouest, Pyrénées/Gascogne' %>
 
 
-<div class='d-flex flex-row wine-card-large'>
+<div class='wine-card wine-card-large d-flex flex-column '>
   <%# title %>
-  <div class='d-flex justify-content-center align-items-center title-box' style='width:100%'>
-    <h3><%= wine.name %></h3>
+  <div class='title-box d-flex justify-content-center align-items-center' style='width:100%'>
+    <p><%= wine.name %></p>
   </div>
 
   <%# image %>
-  <div>
-    <div class='img-box d-flex justify-content-center align-items-center'>
-      <img src=<%= wine.image_url %>  alt="bottle image" >
-    </div>
+  <div class='img-box d-flex justify-content-center align-items-center'>
+    <img src=<%= wine.image_url %>  alt="bottle image" >
   </div>
 
   <%# attributes %>
   <div>
     <%# price and rating %>
-    <div class='d-flex flex-row' style='width:100%;'>
+    <div class='d-flex flex-row' style='width:100%; padding-right:8px;'>
       <%# Price %>
       <div class='price-box d-flex justify-content-center align-items-center'>
         <p><%= humanized_money_with_symbol(wine.price) %></p>
       </div>
       <%# rating %>
-      <div class='d-flex justify-content-center align-items-center flex-grow-1'>
-        <% rating = 5.00 * wine.rating / 100 %>
-        <% remainder = rating % 1 %>
-
-        <% if remainder < 0.5 %>
-          <% rating -= remainder %>
-        <% else %>
-          <% rating += 1 - remainder %>
-        <% end %>
-
-        <% yellow_stars = rating.to_i %>
-        <% yellow_stars.times do%>
-          <i class="fas fa-star star_yellow"></i>
-        <% end %>
-
-        <% grey_stars = 5-rating.to_i %>
-        <% grey_stars.times do%>
-          <i class="fas fa-star star_grey"></i>
-        <% end %>
-      </div>
+      <%= render 'shared/wine_card_rating', wine_rating: wine.rating, alignment: 'justify-content-end' %>
     </div>
 
     <%# Information %>
-    <div class='d-flex flex-column wine-info'>
+    <div class='wine-info d-flex flex-column '>
       <%# color %>
       <div class='d-flex flex-row'>
         <p class='tag'>Color:</p>
@@ -63,19 +43,19 @@
 
       <%# Grape variety %>
       <div class='d-flex flex-row'>
-        <p class='tag'>Grape variety:</p>
+        <p class='tag'>Grapes:</p>
         <p class='content'><%= wine.grapes %></p>
       </div>
 
       <%# Alcohol level %>
       <div class='d-flex flex-row'>
         <p class='tag'>Alcohol level:</p>
-        <p class='content'><%= wine.alcohol %></p>
+        <p class='content'><%= "#{wine.alcohol}%" %></p>
       </div>
 
       <div class='d-flex flex-row justify-content-between'>
-        <p class='tag'>Alcohol level:</p>
-        <p class='tag'><%= "TMPkm distance" %></p>  <%# Needs proper variable %>
+        <p class='tag'>x units in stock</p> <%# Needs proper variable %>
+        <p class='tag'>y km distance</p>  <%# Needs proper variable %>
       </div>
     </div>
 
@@ -84,10 +64,6 @@
       <%= link_to('Find bottle', map_path, class: 'btn') %>
     </div>
 
-
   </div>
-
-
-
 
 </div>
