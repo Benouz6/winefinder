@@ -5,6 +5,6 @@ class Wine < ApplicationRecord
   has_many :inventories
   has_many :stores, through: :inventories
 
-  validates :name, :region, :description, :color, presence: true
+  validates :name, :origin, :description, :color, presence: true
   validates :saq_id, presence: true, numericality: { only_integer: true }
 end
