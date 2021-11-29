@@ -47,7 +47,7 @@
   }
 }
 
-.wine-card-small .price {
+.wine-card-small .price-box {
   background-color:$LightBurgundy;
   width: 80px;
   height: 37px;
@@ -87,3 +87,13 @@
 .star_grey {
   color: $DarkGrey;
 }
+
+/*
+.wine-card-large {
+}
+
+// shared:
+.title-box
+.img-box // size styling is different for large card
+
+*/
