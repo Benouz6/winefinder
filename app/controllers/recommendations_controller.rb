@@ -37,7 +37,6 @@ class RecommendationsController < ApplicationController
     file = "#{Rails.public_path}/data_json/#{wine.saq_id}.json"
     avails = JSON.parse(File.open(file).read)['list']
     avails.first(3).each do |avail|
-      raise
       i = Inventory.new(
         bottle_count: avail["qty"],
         longitude: avail["longitude"],
