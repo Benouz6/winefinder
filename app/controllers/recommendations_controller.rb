@@ -15,6 +15,9 @@ class RecommendationsController < ApplicationController
         .order(price_cents: :desc)
         .order(rating: :desc)
         .limit(5)
+      @top_rated = @top_five.each do |tf|
+        p create_inventories(tf)
+      end
     else
       @top_five = Wine.all
     end
