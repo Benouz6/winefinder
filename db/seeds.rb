@@ -15,7 +15,6 @@ Food.create!(name: "Vegetarian")
 Food.create!(name: "Mushrooms")
 Food.create!(name: "Spicy food")
 
-
 scrape_wines()
 
 wines = Wine.all
