@@ -18,9 +18,14 @@ class RecommendationsController < ApplicationController
     else
       @top_five = Wine.all
     end
+  end
 
-    def map
-
+  def map
+    @markers = @recommandations.params[id].geocoded.map do |wine|
+      {
+        lat: wine.latitude,
+        lng: wine.longitude
+      }
     end
   end
 end
