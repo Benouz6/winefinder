@@ -18,11 +18,13 @@
       <p>What is the best time of day to enjoy rosé? We suggest its best to toast with a glass of rosé over brunch...</p>
     </div>
   </div>
+<%= link_to(pages_article_path, class:"article-card") do %>
   <div id="card-2" class="card-product">
     <%= image_tag "article_image_2.jpg" %>
-    <div class="card-product-infos">
-      <h2>The art of pairings</h2>
-      <p>When getting ready to sit down for a meal, choosing the right wine can really make your culinary creations shine...</p>
-    </div>
+      <div class="card-product-infos">
+        <h2>The art of pairings</h2>
+          <p>When getting ready to sit down for a meal, choosing the right wine can really make your culinary creations shine...</p>
+      </div>
   </div>
+<% end %>
 </div>
