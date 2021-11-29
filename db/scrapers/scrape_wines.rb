@@ -4,9 +4,21 @@ def fetch_description(link)
   html_doc.search("[data-th]")[3].text.strip
 end
 
+def fetch_region(link)
+  html_file = URI.open(link).read
+  html_doc = Nokogiri::HTML(html_file)
+  html_doc.search("[data-th]")[1].text.strip
+end
+
+def fetch_country(link)
+  html_file = URI.open(link).read
+  html_doc = Nokogiri::HTML(html_file)
+  html_doc.search("[data-th]")[0].text.strip
+end
+
 def scrape_wines
   page = 1
-  colors = ["red", "white"] * 4
+  colors = ["red"]
 
   colors.each do |color|
     url = "https://www.saq.com/en/products/wine/#{color}-wine?p=#{page}"
@@ -19,12 +31,17 @@ def scrape_wines
       price = (price_float*100).to_i
       saq_id = element.search("[data-product-id]").attribute("data-product-id").value
       temp_origin = element.search(".product-item-identity-format span").text.strip.gsub(/[|]/, "").split(/\b/)
-      origin = temp_origin.reject(&:blank?).last
+      # origin = temp_origin.reject(&:blank?).last
       rating_result = element.search(".rating-result").attribute("title")
       rating = rating_result.nil? ? 0 : rating_result.value.match(/\d+/)[0].to_i
       image_url = element.search(".product-image-photo").attribute('src').value
       link = element.search(".product-item-link").attribute('href').value
       description = fetch_description(link)
+
+
+      region = fetch_region(link)
+      country = fetch_country(link)
+      origin = "#{region}, #{country}"
 
       Wine.create!(
         name: name,
@@ -34,9 +51,9 @@ def scrape_wines
         color: color,
         description: description,
         image_url: image_url,
-        rating: rating
+        rating: rating,
       )
     end
-    page += 50
+    # page += 50
   end
 end
