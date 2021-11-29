@@ -15,12 +15,38 @@ class RecommendationsController < ApplicationController
         .order(price_cents: :desc)
         .order(rating: :desc)
         .limit(5)
+
+      @top_five.each { |wine| create_inventories(wine) }
     else
       @top_five = Wine.all
     end
+  end
 
-    def map
 
+  def map
+    @wine = Wine.find(params[:id])
+    @markers = @wine.inventories.map do |wine|
+      {
+        lat: wine.latitude,
+        lng: wine.longitude
+      }
     end
   end
+
+  def create_inventories(wine)
+    file = "#{Rails.public_path}/data_json/#{wine.saq_id}.json"
+    avails = JSON.parse(File.open(file).read)['list']
+    avails.first(3).each do |avail|
+      i = Inventory.new(
+        bottle_count: avail["qty"],
+        longitude: avail["longitude"],
+        latitude: avail["latitude"],
+        name_saq: avail["name"],
+        address: avail["address1"]
+      )
+      i.wine = wine
+      i.save
+    end
+  end
+
 end
