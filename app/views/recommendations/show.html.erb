@@ -5,7 +5,7 @@
         <li>Price: <%= humanized_money_with_symbol(@wine.price)  %></li>
         <li>Color: <%= @wine.color %></li>
         <li>Rating: <%= @wine.rating %></li>
-        <li>Region: <%= @wine.region %></li>
+        <li>Region: <%= @wine.origin %></li>
         <% @wine.foods.each do |food| %>
         <li>Food: <%= food.name %></li>
       </ul>

@@ -16,7 +16,6 @@ class RecommendationsController < ApplicationController
         .order(rating: :desc)
         .limit(5)
 
-
       @top_five.each { |wine| create_inventories(wine) }
     else
       @top_five = Wine.all
