@@ -5,4 +5,7 @@ class PagesController < ApplicationController
   def search
 
   end
+  def article
+
+  end
 end

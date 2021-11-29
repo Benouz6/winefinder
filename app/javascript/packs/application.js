@@ -26,9 +26,12 @@ require("channels")
 import "bootstrap";
 
 // Internal imports, e.g:
+
 import { toggleCardState } from '../components/wine_card';
+import { initMapbox } from '../plugins/init_mapbox';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   toggleCardState();
+  initMapbox();
 });

@@ -16,6 +16,14 @@ def fetch_country(link)
   html_doc.search("[data-th]")[0].text.strip
 end
 
+def fetch_inventories(id)
+  url = "https://www.saq.com/en/store/locator/ajaxlist/context/product/id/#{id}?loaded=0&_=1637944648926"
+  json = URI.open(url, { 'x-requested-with' => 'XMLHttpRequest' }).read
+  File.open("public/data_json/#{id}.json", 'w') do |f|
+    f.write(json)
+  end
+end
+
 def scrape_wines
   page = 1
   colors = ["red", "white"] * 4
@@ -51,8 +59,9 @@ def scrape_wines
         color: color,
         description: description,
         image_url: image_url,
-        rating: rating,
+        rating: rating
       )
+      # fetch_inventories(saq_id)
     end
     page += 50
   end

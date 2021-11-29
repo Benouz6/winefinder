@@ -38,8 +38,10 @@ group :development, :test do
   gem 'pry-rails'
   gem 'dotenv-rails'
 
+  # Geocoder gem
+  gem 'geocoder'
 
-  # Cloudinary gem
+ # Cloudinary gem
     gem 'cloudinary', '~> 1.16.0'
 
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
