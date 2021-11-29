@@ -6,18 +6,17 @@ class RecommendationsController < ApplicationController
 
   def index
     if params[:color].present?
-      @wines = Wine.where(color: params[:color].downcase)
-      @food_pairings = FoodPairing.where(food_id: params[:food_id])
-      @wines = @food_pairings.map do |fp|
-        fp.wine
-      end
-      @recommendations = @wines.select { |wine| wine.color == params[:color].downcase && wine.price.cents <= params[:price].to_i * 100 }
-      @top_five = @recommendations.first(5).sort_by { |wine| wine.price }.reverse
-
-      # Show the price near to 50$
-
+      @top_five = Wine
+        .includes(:foods)
+        .joins(food_pairings: :food)
+        .where(foods: { id: params[:food_id] })
+        .where(color: params[:color].downcase)
+        .where(price_cents: ..params[:price].to_i * 100)
+        .order(price_cents: :desc)
+        .order(rating: :desc)
+        .limit(5)
     else
-      @wines = Wine.all
+      @top_five = Wine.all
     end
 
     def map
