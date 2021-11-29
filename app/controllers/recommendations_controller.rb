@@ -42,7 +42,8 @@ class RecommendationsController < ApplicationController
         bottle_count: avail["qty"],
         longitude: avail["longitude"],
         latitude: avail["latitude"],
-
+        name_saq: avail["name"],
+        address: avail["address1"]
       )
       i.wine = wine
       i.save
