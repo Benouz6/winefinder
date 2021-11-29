@@ -22,6 +22,17 @@ class RecommendationsController < ApplicationController
     end
   end
 
+
+  def map
+    @wine = Wine.find(params[:id])
+    @markers = @wine.inventories.map do |wine|
+      {
+        lat: wine.latitude,
+        lng: wine.longitude
+      }
+    end
+  end
+
   def create_inventories(wine)
     file = "#{Rails.public_path}/data_json/#{wine.saq_id}.json"
     avails = JSON.parse(File.open(file).read)['list']
