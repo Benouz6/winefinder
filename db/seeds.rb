@@ -6,9 +6,15 @@ FoodPairing.destroy_all
 Wine.destroy_all
 Food.destroy_all
 
-Food.create!(name: "Chicken")
+Food.create!(name: "Beef")
+Food.create!(name: "Pork")
+Food.create!(name: "Poultry")
+Food.create!(name: "Cheese")
 Food.create!(name: "Fish")
-Food.create!(name: "Meat")
+Food.create!(name: "Vegetarian")
+Food.create!(name: "Mushrooms")
+Food.create!(name: "Spicy food")
+
 
 scrape_wines()
 
