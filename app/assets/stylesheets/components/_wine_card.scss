@@ -99,6 +99,7 @@
 
 // large card
 .wine-card-large {
+
   > .img-box {
     padding: 9px;
     > img {
@@ -125,4 +126,16 @@
     padding: 9px;
     background-color: $Grey
   }
+}
+
+.active-card {
+  display: flex;
+  transition: all 5s linear;
+  opacity: 1;
+}
+
+.disabled-card {
+  display: none;
+  transition: all 5s linear;
+  opacity: 0;
 }
