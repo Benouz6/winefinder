@@ -15,15 +15,20 @@ class RecommendationsController < ApplicationController
         .order(price_cents: :desc)
         .order(rating: :desc)
         .limit(5)
-      @top_rated = @top_five.each do |tf|
-        p create_inventories(tf)
-      end
+
+
+      @top_five.each { |wine| create_inventories(wine) }
     else
       @top_five = Wine.all
     end
+  end
 
-    def map
-
+  def create_inventories(wine)
+    file = "#{Rails.public_path}/data_json/#{wine.saq_id}.json"
+    avails = JSON.parse(File.open(file).read)['list']
+    avails.first(3).each do |avail|
+      p avail["distance"]
     end
   end
+
 end

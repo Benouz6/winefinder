@@ -24,22 +24,16 @@ def fetch_inventories(id)
   end
 end
 
-def create_inventories(wine)
-  file = "#{Rails.public_path}/data_json/#{wine.saq_id}.json"
-  avails = JSON.parse(File.open(file).read)['list']
-end
-
-
 def scrape_wines
   page = 1
-  colors = ["red"] #* 4
+  colors = ["red", "white"] * 4
 
   colors.each do |color|
     url = "https://www.saq.com/en/products/wine/#{color}-wine?p=#{page}"
     html_file = URI.open(url).read
     html_doc = Nokogiri::HTML(html_file)
 
-    html_doc.search(".product-item-info").first(1).each do |element|
+    html_doc.search(".product-item-info").each do |element|
       name = element.search(".product-item-name").text.strip.gsub(/\s+/, " ")
       price_float = element.search(".price")[0].text.strip.gsub(/[[:space:]]\$/, "").gsub(",", "").gsub("$", "").to_f
       price = (price_float*100).to_i
