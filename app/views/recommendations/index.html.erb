@@ -10,7 +10,6 @@
 
 <div class='d-flex flex-column wine-cards' >
   <% @top_five.each do |wine| %>
-    <%= render 'shared/wine_card_small', wine: wine%>
-    <%= render 'shared/wine_card_large', wine: wine%>
+    <%= render 'shared/wine_card', wine: wine%>
   <% end %>
 </div>

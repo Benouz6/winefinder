@@ -1,12 +1,7 @@
-<%# <% wine = Wine.new %>
-<%# <% wine.image_url = 'https://www.saq.com/media/catalog/product/1/4/14234094-1_1578554708.png?quality=80&fit=bounds&height=166&width=111&canvas=111:166' %> %>
-<%# <% wine.name = 'Alceno Monastrell' %>
-<%# <% wine.color = 'red' %>
-<%# <% wine.region = 'France, toulouse blablabla' %>
-<%# <% wine.price = 25 %>
-<%# <% wine.rating = 80 %>
+<%# Temporary grape variety and alcohol level values %>
+<% wine.grapes = 'some fancy schmancy grapes' %>
+<% wine.alcohol = 14 %>
+<% wine.origin = 'France, Sud-Ouest, Pyrénées/Gascogne' %>
 
-<div class='d-flex flex-column wine-cards' >
-
-
-</div>
+<%= render 'shared/wine_card_small', wine: wine %>
+<%= render 'shared/wine_card_large', wine: wine %>
