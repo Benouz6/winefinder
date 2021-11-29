@@ -30,7 +30,7 @@ def scrape_wines
         name: name,
         price_cents: price,
         saq_id: saq_id,
-        region: origin,
+        origin: origin,
         color: color,
         description: description,
         image_url: image_url,
