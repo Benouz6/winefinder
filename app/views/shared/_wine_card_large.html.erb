@@ -1,3 +1,8 @@
+<%# Temporary grape variety and alcohol level values %>
+<% wine.grapes = 'some fancy schmancy grapes' %>
+<% wine.alcohol = 14 %>
+
+
 <div class='d-flex flex-row wine-card-large'>
   <%# title %>
   <div class='d-flex justify-content-center align-items-center title-box' style='width:100%'>
@@ -42,6 +47,42 @@
       </div>
     </div>
 
+    <%# Information %>
+    <div class='d-flex flex-column wine-info'>
+      <%# color %>
+      <div class='d-flex flex-row'>
+        <p class='tag'>Color:</p>
+        <p class='content'><%= wine.color %></p>
+      </div>
+
+      <%# Region %>
+      <div class='d-flex flex-row'>
+        <p class='tag'>Origin:</p>
+        <p class='content'><%= wine.origin %></p>
+      </div>
+
+      <%# Grape variety %>
+      <div class='d-flex flex-row'>
+        <p class='tag'>Grape variety:</p>
+        <p class='content'><%= wine.grapes %></p>
+      </div>
+
+      <%# Alcohol level %>
+      <div class='d-flex flex-row'>
+        <p class='tag'>Alcohol level:</p>
+        <p class='content'><%= wine.alcohol %></p>
+      </div>
+
+      <div class='d-flex flex-row justify-content-between'>
+        <p class='tag'>Alcohol level:</p>
+        <p class='tag'><%= "TMPkm distance" %></p>  <%# Needs proper variable %>
+      </div>
+    </div>
+
+    <%# Find bottle CTA %>
+    <div class='find-box d-flex align-items-center justify-content-center'>
+      <%= link_to('Find bottle', map_path, class: 'btn') %>
+    </div>
 
 
   </div>

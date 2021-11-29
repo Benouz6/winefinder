@@ -12,5 +12,6 @@
   <% @top_five.each do |wine| %>
     <%= render 'shared/wine_card_small', wine: wine%>
     <%= link_to wine.name, recommendation_path(wine) %>
+    <%= link_to('Find bottle', map_path, class: 'btn') %>
   <% end %>
 </div>
