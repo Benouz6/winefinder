@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_29_154430) do
+ActiveRecord::Schema.define(version: 2021_11_29_155439) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,7 +49,6 @@ ActiveRecord::Schema.define(version: 2021_11_29_154430) do
 
   create_table "wines", force: :cascade do |t|
     t.string "name"
-    t.string "region"
     t.string "description"
     t.string "color"
     t.datetime "created_at", precision: 6, null: false
@@ -60,7 +59,6 @@ ActiveRecord::Schema.define(version: 2021_11_29_154430) do
     t.integer "rating", default: 0, null: false
     t.integer "price_cents", default: 0, null: false
     t.string "price_currency", default: "CAD", null: false
-    t.string "country"
     t.string "grapes"
     t.integer "alcohol"
   end
