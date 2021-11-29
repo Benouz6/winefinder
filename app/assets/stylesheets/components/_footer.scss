@@ -1,0 +1,83 @@
+.ftr {
+  background: $Grey;
+}
+
+.footer-title {
+  text-align: left;
+  font-size: 1.3rem;
+  padding-top: 20px;
+  font-style: italic;
+  border-bottom: 2px solid $DarkBurgundy;
+}
+
+.footer-icons p {
+  text-align: left;
+}
+
+.text-reset {
+  padding: 0 18px;
+}
+
+.footer {
+  background: $PinkishGrey;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 50px;
+  padding: 0px 15px;
+  color: rgba(0,0,0,0.3);
+}
+
+#footer-home {
+  padding: 0 8px;
+}
+
+.footer-links {
+  display: flex;
+  align-items: center;
+}
+
+.footer-copyright {
+  padding: 0px 0px 5px;
+}
+
+#footer-home {
+  color: $Black;
+  font-size: 14px;
+  font-family: $body-font;
+}
+
+#footer-home-2 {
+  color: $Black;
+  font-size: 14px;
+  font-family: $body-font;
+}
+
+.footer-links a {
+  color: black;
+  opacity: 0.15;
+  font-size: 18px;
+  padding: 0px 2px;
+}
+.footer-links a:hover {
+  opacity: 1;
+}
+.footer .fa-heart {
+  color: #D23333;
+}
+
+#twitter-footer {
+  padding: 0 10px;
+  margin-bottom: 5px;
+}
+
+#facebook-footer {
+  padding: 0 10px;
+  margin-bottom: 5px;
+}
+
+#instagram-footer {
+  padding: 0 10px;
+  margin-bottom: 5px;
+}
