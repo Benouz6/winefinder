@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2021_11_29_155437) do
-=======
-ActiveRecord::Schema.define(version: 2021_11_29_155439) do
->>>>>>> master
+ActiveRecord::Schema.define(version: 2021_11_29_191343) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,13 +32,11 @@ ActiveRecord::Schema.define(version: 2021_11_29_155439) do
 
   create_table "inventories", force: :cascade do |t|
     t.integer "bottle_count"
-    t.bigint "store_id", null: false
     t.bigint "wine_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.float "latitude"
     t.float "longitude"
-    t.index ["store_id"], name: "index_inventories_on_store_id"
     t.index ["wine_id"], name: "index_inventories_on_wine_id"
   end
 
@@ -71,6 +65,5 @@ ActiveRecord::Schema.define(version: 2021_11_29_155439) do
 
   add_foreign_key "food_pairings", "foods"
   add_foreign_key "food_pairings", "wines"
-  add_foreign_key "inventories", "stores"
   add_foreign_key "inventories", "wines"
 end

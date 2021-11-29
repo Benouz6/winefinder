@@ -21,7 +21,8 @@ class RecommendationsController < ApplicationController
   end
 
   def map
-    @markers = @recommandations.params[id].geocoded.map do |wine|
+    @wine = Wine.find(params[:id])
+    @markers = @wine.inventories.map do |wine|
       {
         lat: wine.latitude,
         lng: wine.longitude
