@@ -1,0 +1,40 @@
+<footer class="ftr">
+  <section class="">
+    <div class="container text-center text-md-start mt-5">
+      <div class="mt-3">
+        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4 footer-title">
+          <p> Trusted by millions to find the right wine bottle for their event.</p>
+        </div>
+        <div class="col-md-2 col-lg-2 col-xl-2 mb-4 footer-icons">
+          <p>
+            <%= image_tag ("pairing.png"), style:"height: 30px" %>
+            <a href="#!" class="text-reset">Personnalized recommendations</a>
+          </p>
+          <p>
+            <%= image_tag ("wine.png"), style:"height: 30px" %>
+            <a href="#!" class="text-reset">Choose the right bottle</a>
+          </p>
+          <p>
+            <%= image_tag ("route.png"), style:"height: 30px" %>
+            <a href="#!" class="text-reset">Route to your nearest SAQ</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="footer">
+    <div class="footer-copyright">
+      <%= link_to(root_path, id:"footer-home") do %>
+        Home
+      <% end %>
+      <%= link_to(pages_search_path, id:"footer-home-2") do %>
+        Find wine
+      <% end %>
+    </div>
+    <div class="footer-links">
+      <%= image_tag ("twitter.png"), id:"twitter-footer", style:"height: 25px" %>
+      <%= image_tag ("facebook.png"), id:"facebook-footer", style:"height: 25px" %>
+      <%= image_tag ("instagram.png"), id:"instagram-footer", style:"height: 25px" %>
+    </div>
+  </div>
+</footer>
