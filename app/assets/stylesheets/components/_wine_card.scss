@@ -1,0 +1,89 @@
+// cards container
+.wine-cards {
+  justify-content: space-between;
+  padding: 17px;
+
+  p {
+    margin:0px;
+  }
+}
+
+// small cards
+.wine-card-small {
+  margin: 17px;
+  width: 310px;
+  height: 157px;
+  background: $LightPink;
+  box-shadow: 1px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+}
+
+.wine-card-small > .img-box {
+  width: 98px;
+  padding-top: 6.3px;
+  padding-bottom: 6.3px;
+  background-color: $Grey;
+  border-radius: 10px 0px 0px 10px;
+
+  > img {
+    height: 144px;
+  }
+}
+
+.wine-card-small .title-box {
+  background-color: $Burgundy;
+  border-radius: 0px 10px 0px 0px;
+  padding: 4.5px;
+
+
+  > p {
+    color: $LightPink;
+    font-size: 18px;
+    font-weight: bold;
+    white-space: nowrap;
+    width: 185px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.wine-card-small .price {
+  background-color:$LightBurgundy;
+  width: 80px;
+  height: 37px;
+  p {
+    color: $LightPink;
+    font-size: 21.6px;
+  }
+}
+
+
+// shared
+.wine-info {
+  font-size: 14.4px;
+  font-weight: bold;
+  flex-grow: 1;
+  padding: 9px;
+
+  .tag {
+    margin-right: 2px;
+  }
+
+  .content {
+    color: $DarkGrey;
+  }
+}
+
+.star_yellow,
+.star_grey {
+  margin: 1px;
+  font-size: 19px;
+}
+
+.star_yellow {
+  color: $Yellow;
+}
+
+.star_grey {
+  color: $DarkGrey;
+}
