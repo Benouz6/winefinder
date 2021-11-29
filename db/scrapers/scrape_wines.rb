@@ -18,7 +18,7 @@ end
 
 def scrape_wines
   page = 1
-  colors = ["red"]
+  colors = ["red", "white"] * 4
 
   colors.each do |color|
     url = "https://www.saq.com/en/products/wine/#{color}-wine?p=#{page}"
@@ -54,6 +54,6 @@ def scrape_wines
         rating: rating,
       )
     end
-    # page += 50
+    page += 50
   end
 end
