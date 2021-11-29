@@ -1,0 +1,20 @@
+<div class="d-flex align-items-center flex-grow-1 <%= alignment %>">
+  <% rating = 5.00 * wine_rating / 100 %>
+  <% remainder = rating % 1 %>
+
+  <% if remainder < 0.5 %>
+    <% rating -= remainder %>
+  <% else %>
+    <% rating += 1 - remainder %>
+  <% end %>
+
+  <% yellow_stars = rating.to_i %>
+  <% yellow_stars.times do%>
+    <i class="fas fa-star star star_yellow"></i>
+  <% end %>
+
+  <% grey_stars = 5-rating.to_i %>
+  <% grey_stars.times do%>
+    <i class="fas fa-star star star_grey"></i>
+  <% end %>
+</div>
