@@ -22,17 +22,19 @@
 
 .article-content h2 {
   text-align: center;
+  padding-bottom: 10px;
 }
 
 .article-content p {
   line-height: 1.6;
 }
 
-.btn {
+.btn-article {
   display: flex;
   justify-content: center;
   margin: auto;
   margin-bottom: 10px;
+  width: 60%;
 }
 
 .article-divider {
