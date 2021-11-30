@@ -38,9 +38,6 @@ group :development, :test do
   gem 'pry-rails'
   gem 'dotenv-rails'
 
-  # Geocoder gem
-  gem 'geocoder'
-
  # Cloudinary gem
     gem 'cloudinary', '~> 1.16.0'
 
