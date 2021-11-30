@@ -6,7 +6,7 @@ class RecommendationsController < ApplicationController
 
   def index
     if params[:color].present?
-      top_five_wines = Wine
+      top_twenty_wines = Wine
         .includes(:foods)
         .joins(food_pairings: :food)
         .where(foods: { id: params[:food_id] })
@@ -14,21 +14,25 @@ class RecommendationsController < ApplicationController
         .where(price_cents: ..params[:price].to_i * 100)
         .order(price_cents: :desc)
         .order(rating: :desc)
-        .limit(5)
+        .limit(20)
 
       # passing the top five inventories to the index page
-      @top_five = top_five_wines.map do |wine|
+      @top_twenty_wines_inventories = top_twenty_wines.map do |wine|
         create_inventories(wine)
       end
-
+      # create_closest(@top_five)
+      x = top_twenty_wines.map  { |wine| wine.inventories.first }.sort_by { |inv| inv.distance.gsub("km", "").to_f }
+      y = x.first(5).map(&:wine)
+      raise
     else
       @top_five = Wine.all
     end
   end
 
-def create_closest
-
-end
+  def create_closest(list)
+    distance = list.sort_by { |l| l[:distance] }
+    raise
+  end
 
   def map
     @inventory = Inventory.find(params[:id])
@@ -48,7 +52,7 @@ end
   def create_inventories(wine)
     file = "#{Rails.public_path}/data_json/#{wine.saq_id}.json"
     avails = JSON.parse(File.open(file).read)['list']
-    avails.first(3).each do |avail|
+    avails.first(3).map do |avail|
       i = Inventory.new(
         bottle_count: avail["qty"],
         longitude: avail["longitude"],
@@ -59,9 +63,7 @@ end
       )
       i.wine = wine
       i.save
-      raise
       return i
     end
   end
-
 end
