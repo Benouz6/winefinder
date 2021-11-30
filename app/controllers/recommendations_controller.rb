@@ -27,16 +27,18 @@ class RecommendationsController < ApplicationController
   end
 
   def map
-    # Page should use inventory instance as it stores all the required information
-    # @inventory = Inventory.find(params[:id])
+    @inventory = Inventory.find(params[:id])
 
-    @wine = Wine.find(params[:id])
-    @markers = @wine.inventories.map do |wine|
-      {
-        lat: wine.latitude,
-        lng: wine.longitude
-      }
-    end
+    @markers = [{ lat: @inventory.latitude, lng: @inventory.longitude }]
+
+    # Multiple markers:
+    # @wine = @inventory.wine
+    # @markers = @wine.inventories.map do |wine|
+    #   {
+    #     lat: wine.latitude,
+    #     lng: wine.longitude
+    #   }
+    # end
   end
 
   def create_inventories(wine)
