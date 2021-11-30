@@ -15,7 +15,7 @@
 
 <%# wine cards %>
 <div class='d-flex flex-column wine-cards' >
-  <% @top_five.each do |inventory| %>
+  <% @top_wines.each do |inventory| %>
     <%= render 'shared/wine_card', inventory: inventory%>
   <% end %>
 </div>
