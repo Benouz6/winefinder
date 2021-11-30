@@ -64,5 +64,6 @@ def scrape_wines
       # fetch_inventories(saq_id)
     end
     page += 50
+    puts "#{page} done"
   end
 end
