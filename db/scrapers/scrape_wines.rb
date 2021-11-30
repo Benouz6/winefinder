@@ -26,7 +26,7 @@ end
 
 def scrape_wines
   page = 1
-  colors = ["red", "white"] * 4
+  colors = ["Red", "White"] * 4
 
   colors.each do |color|
     url = "https://www.saq.com/en/products/wine/#{color}-wine?p=#{page}"
@@ -64,5 +64,6 @@ def scrape_wines
       # fetch_inventories(saq_id)
     end
     page += 50
+    puts "#{page} page done"
   end
 end
