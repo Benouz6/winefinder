@@ -62,7 +62,7 @@ def scrape_wines
         image_url: image_url,
         rating: rating
       )
-      # fetch_inventories(saq_id)
+      fetch_inventories(saq_id)
     end
     page += 50
     puts "#{page} page done"
