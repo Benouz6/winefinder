@@ -1,11 +1,18 @@
-<div class="container">
-<h1 style="text-align:center">Tell us a bit more about what you’re looking for?</h1>
+<%# Title box %>
+<div class='title-box'>
+  <h1 style='font-size: 24px;'>Tell us a bit more about what you’re looking for?</h1>
+</div>
+
+<div class='container mt-2'>
   <form action="/recommendations" method="Get">
-    <label>What will you have to eat?</label>
-    <%= select_tag "food_id", options_from_collection_for_select(Food.all, "id", "name"), include_blank: false, selected: Food.first, class:"form-control" %>
   <div class="form-group">
-    <label for="exampleFormControlSelect1">What's your maximum budget?</label>
-    <select id="price" name="price" class="form-control" id="exampleFormControlSelect1">
+    <%# Food type %>
+    <label class='mb-1'>What will you have to eat?</label>
+    <%= select_tag "food_id", options_from_collection_for_select(Food.all, "id", "name"), include_blank: false, selected: Food.first, class:"form-control mb-2" %>
+
+    <%# budget %>
+    <label class='mb-1' for="exampleFormControlSelect1">What's your maximum budget?</label>
+    <select id="price" name="price" class="form-control mb-2" id="exampleFormControlSelect1">
       <option>15</option>
       <option>20</option>
       <option>25</option>
@@ -15,14 +22,18 @@
       <option>45</option>
       <option>50</option>
     </select>
-    <label for="exampleFormControlSelect1">What wine color are you looking for?</label>
-    <select id="color" name="color" class="form-control" id="exampleFormControlSelect1">
+
+    <%# Wine color %>
+    <label class='mb-1' for="exampleFormControlSelect1">What wine color are you looking for?</label>
+    <select id="color" name="color" class="form-control mb-2" id="exampleFormControlSelect1">
       <option>White</option>
       <option>Red</option>
       <option>Rose</option>
     </select>
-    <label for="exampleFormControlSelect2">How many bottle do you want?</label>
-    <select id="quantity" name="quantity" class="form-control" id="exampleFormControlSelect2">
+
+    <%# bottle count %>
+    <label class='mb-1' for="exampleFormControlSelect2">How many bottle do you want?</label>
+    <select id="quantity" name="quantity" class="form-control mb-2" id="exampleFormControlSelect2">
       <option>1</option>
       <option>2</option>
       <option>3</option>
@@ -33,7 +44,9 @@
       <option>8</option>
       <option>9</option>
   </div>
+
+  <%# Submit button %>
   <div>
     <input class="btn btn-secondary btn-form" type="submit" value="Search">
   </div>
-  </div>
+</div>
