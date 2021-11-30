@@ -8,6 +8,11 @@
   }
 }
 
+.result-map-div {
+  position: absolute;
+  margin-top: -275px;
+}
+
 // shared
 .wine-card {
   margin: 17px;
@@ -146,8 +151,6 @@
 .result-card {
   height: 157px;
   display: flex;
-  position: absolute;
-  margin-top: -240px;
 
   > .img-box {
     width: 98px;

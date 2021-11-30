@@ -12,6 +12,9 @@
      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
 </div>
 
-<div class="wine-card">
+<div class="wine-cards result-map-div">
+  <%= link_to(pages_search_path, class: "btn btn-flat btn-article") do %>
+    Back To Results
+  <% end %>
   <%= render 'shared/wine_card_result', inventory: @inventory %>
 </div>
