@@ -41,11 +41,11 @@
 
   typewriter.typeString('Let’s find the perfect wine for your occasion.')
       .pauseFor(2500)
-      .deleteAll()
-      .typeString('Strings can be removed')
+      .deleteChars(18)
+      .typeString('available at your nearest SAQ.')
       .pauseFor(2500)
-      .deleteChars(7)
-      .typeString('<strong>altered!</strong>')
-      .pauseFor(2500)
+      // .deleteChars(7)
+      // .typeString('<strong>altered!</strong>')
+      // .pauseFor(2500)
       .start();
 </script>
