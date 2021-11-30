@@ -1,7 +1,7 @@
 <div class='wine-card wine-card-small active-card flex-row '>
   <%# Image %>
   <div class='img-box d-flex justify-content-center align-items-center'>
-    <img src=<%= wine.image_url %>  alt="bottle image" >
+    <img src=<%= inventory.wine.image_url %>  alt="bottle image" >
   </div>
 
   <%# Attributes %>
@@ -9,7 +9,7 @@
 
     <%# title %>
     <div class='title-box d-flex justify-content-center align-items-center' style='width:100%'>
-      <p><%= wine.name %></p>
+      <p><%= inventory.wine.name %></p>
     </div>
 
     <%# Information %>
@@ -17,13 +17,13 @@
       <%# color %>
       <div class='d-flex flex-row'>
         <p class='tag'>Color:</p>
-        <p class='content'><%= wine.color %></p>
+        <p class='content'><%= inventory.wine.color %></p>
       </div>
 
       <%# Region %>
       <div class='d-flex flex-row'>
         <p class='tag'>Origin:</p>
-        <p class='content'><%= wine.origin %></p>
+        <p class='content'><%= inventory.wine.origin %></p>
       </div>
     </div>
 
@@ -31,10 +31,10 @@
     <div class='d-flex flex-row' style='width:100%;'>
       <%# Price %>
       <div class='price-box d-flex justify-content-center align-items-center'>
-        <p><%= humanized_money_with_symbol(wine.price) %></p>
+        <p><%= humanized_money_with_symbol(inventory.wine.price) %></p>
       </div>
       <%# rating %>
-      <%= render 'shared/wine_card_rating', wine_rating: wine.rating, alignment: 'justify-content-center' %>
+      <%= render 'shared/wine_card_rating', wine_rating: inventory.wine.rating, alignment: 'justify-content-center' %>
     </div>
   </div>
 </div>

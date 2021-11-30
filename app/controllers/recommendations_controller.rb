@@ -6,7 +6,7 @@ class RecommendationsController < ApplicationController
 
   def index
     if params[:color].present?
-      @top_five = Wine
+      top_five_wines = Wine
         .includes(:foods)
         .joins(food_pairings: :food)
         .where(foods: { id: params[:food_id] })
@@ -16,21 +16,29 @@ class RecommendationsController < ApplicationController
         .order(rating: :desc)
         .limit(5)
 
-      @top_five.each { |wine| create_inventories(wine) }
+      # passing the top five inventories to the index page
+      @top_five = top_five_wines.map do |wine|
+        create_inventories(wine)
+      end
+
     else
       @top_five = Wine.all
     end
   end
 
-
   def map
-    @wine = Wine.find(params[:id])
-    @markers = @wine.inventories.map do |wine|
-      {
-        lat: wine.latitude,
-        lng: wine.longitude
-      }
-    end
+    @inventory = Inventory.find(params[:id])
+
+    @markers = [{ lat: @inventory.latitude, lng: @inventory.longitude }]
+
+    # Multiple markers:
+    # @wine = @inventory.wine
+    # @markers = @wine.inventories.map do |wine|
+    #   {
+    #     lat: wine.latitude,
+    #     lng: wine.longitude
+    #   }
+    # end
   end
 
   def create_inventories(wine)
@@ -42,10 +50,12 @@ class RecommendationsController < ApplicationController
         longitude: avail["longitude"],
         latitude: avail["latitude"],
         name_saq: avail["name"],
-        address: avail["address1"]
+        address: avail["address1"],
+        distance: avail["distance"]
       )
       i.wine = wine
       i.save
+      return i
     end
   end
 
