@@ -139,3 +139,39 @@
   transition: all 5s linear;
   opacity: 0;
 }
+
+
+// result cards
+
+.result-card {
+  height: 157px;
+  display: flex;
+  position: absolute;
+  margin-top: -240px;
+
+  > .img-box {
+    width: 98px;
+    padding-top: 6.3px;
+    padding-bottom: 6.3px;
+    border-radius: 10px 0px 0px 10px;
+    > img {
+      height: 144px;
+    }
+  }
+
+  .title-box {
+    border-radius: 0px 10px 0px 0px;
+    > p {
+      font-size: 18px;
+      white-space: nowrap;
+      width: 185px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  .price-box {
+    width: 80px;
+    height: 37px;
+  }
+}

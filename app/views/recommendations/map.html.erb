@@ -1,11 +1,17 @@
-<h1>Your wine is here</h1>
+<div class='title-box'>
+  <h1 style='font-size: 24px;'><%= @inventory.address %></h1>
+</div>
 
-<%= link_to(pages_search_path, class: "btn btn-flat") do %>
-  Find another bottle
-<% end %>
+<%# <%= link_to(pages_search_path, class: "btn btn-flat") do %>
+  <%# Find another bottle %>
+<%# <% end %>
 
 <div id="map"
      style="width: 100%; height: 600px;"
      data-markers="<%= @markers.to_json %>"
      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+</div>
+
+<div class="wine-card">
+  <%= render 'shared/wine_card_result', inventory: @inventory %>
 </div>
