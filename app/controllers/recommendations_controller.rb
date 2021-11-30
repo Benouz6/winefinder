@@ -17,21 +17,15 @@ class RecommendationsController < ApplicationController
         .limit(20)
 
       # passing the top five inventories to the index page
-      @top_twenty_wines_inventories = top_twenty_wines.map do |wine|
+      wines = top_twenty_wines.map { |wine| wine.inventories.first }.sort_by { |inv| inv.distance.gsub("km", "").to_f }
+      nearest_wines = wines.first(5).map(&:wine)
+
+      @top_wines = nearest_wines.map do |wine|
         create_inventories(wine)
       end
-      # create_closest(@top_five)
-      x = top_twenty_wines.map  { |wine| wine.inventories.first }.sort_by { |inv| inv.distance.gsub("km", "").to_f }
-      y = x.first(5).map(&:wine)
-      raise
     else
       @top_five = Wine.all
     end
-  end
-
-  def create_closest(list)
-    distance = list.sort_by { |l| l[:distance] }
-    raise
   end
 
   def map
