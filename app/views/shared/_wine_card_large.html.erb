@@ -1,12 +1,12 @@
 <div class='wine-card wine-card-large disabled-card flex-column'>
   <%# title %>
   <div class='title-box d-flex justify-content-center align-items-center' style='width:100%'>
-    <p><%= wine.name %></p>
+    <p><%= inventory.wine.name %></p>
   </div>
 
   <%# image %>
   <div class='img-box d-flex justify-content-center align-items-center'>
-    <img src=<%= wine.image_url %>  alt="bottle image" >
+    <img src=<%= inventory.wine.image_url %>  alt="bottle image" >
   </div>
 
   <%# attributes %>
@@ -15,10 +15,10 @@
     <div class='d-flex flex-row' style='width:100%; padding-right:8px;'>
       <%# Price %>
       <div class='price-box d-flex justify-content-center align-items-center'>
-        <p><%= humanized_money_with_symbol(wine.price) %></p>
+        <p><%= humanized_money_with_symbol(inventory.wine.price) %></p>
       </div>
       <%# rating %>
-      <%= render 'shared/wine_card_rating', wine_rating: wine.rating, alignment: 'justify-content-end' %>
+      <%= render 'shared/wine_card_rating', wine_rating: inventory.wine.rating, alignment: 'justify-content-end' %>
     </div>
 
     <%# Information %>
@@ -26,36 +26,36 @@
       <%# color %>
       <div class='d-flex flex-row'>
         <p class='tag'>Color:</p>
-        <p class='content'><%= wine.color %></p>
+        <p class='content'><%= inventory.wine.color %></p>
       </div>
 
       <%# Region %>
       <div class='d-flex flex-row'>
         <p class='tag'>Origin:</p>
-        <p class='content'><%= wine.origin %></p>
+        <p class='content'><%= inventory.wine.origin %></p>
       </div>
 
       <%# Grape variety %>
       <div class='d-flex flex-row'>
         <p class='tag'>Grapes:</p>
-        <p class='content'><%= wine.grapes %></p>
+        <p class='content'><%= inventory.wine.grapes %></p>
       </div>
 
       <%# Alcohol level %>
       <div class='d-flex flex-row'>
         <p class='tag'>Alcohol level:</p>
-        <p class='content'><%= "#{wine.alcohol}%" %></p>
+        <p class='content'><%= "#{inventory.wine.alcohol}%" %></p>
       </div>
 
       <div class='d-flex flex-row justify-content-between'>
-        <p class='tag'>x units in stock</p> <%# Needs proper variable %>
-        <p class='tag'>y km distance</p>  <%# Needs proper variable %>
+        <p class='tag'><%= "#{inventory.bottle_count} #{inventory.bottle_count > 1 ? 'bottles' : 'bottle' } in stock" %></p>
+        <p class='tag'><%= "#{inventory.distance.delete(' ')} from you" %></p>
       </div>
     </div>
 
     <%# Find bottle CTA %>
     <div class='find-box d-flex align-items-center justify-content-center'>
-      <%= link_to('Find bottle', map_path(wine), class: 'btn') %>
+      <%= link_to('Find bottle', map_path(inventory), class: 'btn') %>
     </div>
 
   </div>

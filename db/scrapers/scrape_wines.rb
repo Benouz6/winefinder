@@ -43,6 +43,7 @@ def scrape_wines
       rating_result = element.search(".rating-result").attribute("title")
       rating = rating_result.nil? ? 0 : rating_result.value.match(/\d+/)[0].to_i
       image_url = element.search(".product-image-photo").attribute('src').value
+
       link = element.search(".product-item-link").attribute('href').value
       description = fetch_description(link)
 
