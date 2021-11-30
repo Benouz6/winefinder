@@ -16,6 +16,18 @@ def fetch_country(link)
   html_doc.search("[data-th]")[0].text.strip
 end
 
+def fetch_grape_variety(link)
+  html_file = URI.open(link).read
+  html_doc = Nokogiri::HTML(html_file)
+  html_doc.search('strong[data-th="Grape variety"]').text.strip
+end
+
+def fetch_alcohol_rating(link)
+  html_file = URI.open(link).read
+  html_doc = Nokogiri::HTML(html_file)
+  html_doc.search('strong[data-th="Degree of alcohol"]').text.strip
+end
+
 def fetch_inventories(id)
   url = "https://www.saq.com/en/store/locator/ajaxlist/context/product/id/#{id}?loaded=0&_=1637944648926"
   json = URI.open(url, { 'x-requested-with' => 'XMLHttpRequest' }).read
@@ -43,13 +55,13 @@ def scrape_wines
       rating_result = element.search(".rating-result").attribute("title")
       rating = rating_result.nil? ? 0 : rating_result.value.match(/\d+/)[0].to_i
       image_url = element.search(".product-image-photo").attribute('src').value
-
       link = element.search(".product-item-link").attribute('href').value
       description = fetch_description(link)
 
-
       region = fetch_region(link)
       country = fetch_country(link)
+      grape = fetch_grape_variety(link)
+      alcohol = fetch_alcohol_rating(link)
       origin = "#{region}, #{country}"
 
       Wine.create!(
@@ -60,7 +72,9 @@ def scrape_wines
         color: color,
         description: description,
         image_url: image_url,
-        rating: rating
+        rating: rating,
+        grapes: grape,
+        alcohol: alcohol
       )
       # fetch_inventories(saq_id)
     end
