@@ -26,10 +26,10 @@ end
 
 def scrape_wines
   page = 1
-  colors = ["Red", "White"] * 4
+  colors = ["red-wine", "white-wine", "rose"] * 4
 
   colors.each do |color|
-    url = "https://www.saq.com/en/products/wine/#{color}-wine?p=#{page}"
+    url = "https://www.saq.com/en/products/wine/#{color}?p=#{page}"
     html_file = URI.open(url).read
     html_doc = Nokogiri::HTML(html_file)
 
@@ -64,6 +64,10 @@ def scrape_wines
       # fetch_inventories(saq_id)
     end
     page += 50
+<<<<<<< HEAD
     puts "#{page} page done"
+=======
+    puts "#{page} done"
+>>>>>>> b49ef48b8abeac98905de0b243a1638d9bb07eb2
   end
 end
