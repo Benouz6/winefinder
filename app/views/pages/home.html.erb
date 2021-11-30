@@ -1,7 +1,7 @@
 <div class="banner">
   <div class="container">
     <h1>WineFinder</h1>
-    <p>Let’s find the perfect wine for your occasion.</p>
+    <p id="typer"></p>
     <%= link_to(pages_search_path, class: "btn btn-flat") do %>
       Find Wine
     <% end %>
@@ -27,4 +27,25 @@
       </div>
   </div>
 <% end %>
+<div class="homepage-divider"></div>
 </div>
+
+<script>
+  const app = document.getElementById('typer');
+
+  const typewriter = new Typewriter(app, {
+      loop: true,
+      delay: 75,
+      // cursorClassName: 'type-writer-cursor'
+  });
+
+  typewriter.typeString('Let’s find the perfect wine for your occasion.')
+      .pauseFor(2500)
+      .deleteAll()
+      .typeString('Strings can be removed')
+      .pauseFor(2500)
+      .deleteChars(7)
+      .typeString('<strong>altered!</strong>')
+      .pauseFor(2500)
+      .start();
+</script>
