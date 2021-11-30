@@ -26,6 +26,10 @@ class RecommendationsController < ApplicationController
     end
   end
 
+def create_closest
+
+end
+
   def map
     @inventory = Inventory.find(params[:id])
 
@@ -55,6 +59,7 @@ class RecommendationsController < ApplicationController
       )
       i.wine = wine
       i.save
+      raise
       return i
     end
   end
