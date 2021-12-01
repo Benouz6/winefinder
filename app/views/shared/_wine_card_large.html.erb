@@ -55,7 +55,12 @@
 
     <%# Find bottle CTA %>
     <div class='find-box d-flex align-items-center justify-content-center'>
-      <%= link_to('Find bottle', map_path(inventory), class: 'btn') %>
+      <%= link_to('Find bottle', map_path(inventory,
+        color: params[:color],
+        food_id: params[:food_id],
+        price: params[:price],
+        quantity: params[:quantity]),
+        class: 'btn') %>
     </div>
 
   </div>

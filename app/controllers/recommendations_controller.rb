@@ -22,7 +22,11 @@ class RecommendationsController < ApplicationController
       end
 
     else
-      @top_five = Wine.all
+      # @top_five = Wine.all
+        @top_five = Wine.first(1).map do |wine|
+        create_inventories(wine)
+      end
+
     end
   end
 
