@@ -8,14 +8,12 @@ def scrape_wines
     html_file = URI.open(url).read
     html_doc = Nokogiri::HTML(html_file)
 
-    html_doc.search(".product-item-info").each_with_index do |element|
+    html_doc.search(".product-item-info").each do |element|
       print "#{wine_count}."
       name = element.search(".product-item-name").text.strip.gsub(/\s+/, " ")
       print "#{name} - "
       price_float = element.search(".price")[0].text.strip.gsub(/[[:space:]]\$/, "").gsub(",", "").gsub("$", "").to_f
-      price = (price_float*100).to_i
-      temp_origin = element.search(".product-item-identity-format span").text.strip.gsub(/[|]/, "").split(/\b/)
-      # origin = temp_origin.reject(&:blank?).last
+      price = (price_float * 100).to_i
       rating_result = element.search(".rating-result").attribute("title")
       rating = rating_result.nil? ? 0 : rating_result.value.match(/\d+/)[0].to_i
       image_url = element.search(".product-image-photo").attribute('src').value

@@ -11,11 +11,9 @@ class RecommendationsController < ApplicationController
     # fetch required instances:
     stores = get_closest_stores(params)
     wines = get_best_wines(params)
-
     @recommendations = create_recommendations(params, stores, wines)
 
     raise
-
   end
 
   def map
