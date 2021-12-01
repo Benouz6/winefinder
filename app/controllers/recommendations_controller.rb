@@ -11,7 +11,7 @@ class RecommendationsController < ApplicationController
     # fetch required instances:
     stores = get_closest_stores(params)
     wines = get_best_wines(params)
-    @recommendations = create_recommendations(params, stores, wines, 50) # number is for max amount of recommendations
+    @recommendations = create_recommendations(params, stores, wines, 10) # number is for max amount of recommendations
   end
 
   def map
@@ -61,7 +61,7 @@ class RecommendationsController < ApplicationController
                 .order(rating: :desc)
                 .limit(20)
 
-    top_wines = Wine.first(50) # used for testing
+    # top_wines = Wine.first(20) # used for testing
     return top_wines
   end
 
