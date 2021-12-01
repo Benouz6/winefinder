@@ -1,10 +1,14 @@
 def scrape_wines
   colors = ["red-wine", "white-wine", "rose"]
+  wine_count = 1
 
   colors.each do |color|
     page = 1
     4.times do
       p url = "https://www.saq.com/en/products/wine/#{color}?p=#{page}"
+
+      html_file = URI.open(url).read
+      html_doc = Nokogiri::HTML(html_file)
 
       html_doc.search(".product-item-info").each do |element|
         print "#{wine_count}."
