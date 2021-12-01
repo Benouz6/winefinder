@@ -11,14 +11,12 @@ class RecommendationsController < ApplicationController
     # fetch required instances:
     stores = get_closest_stores(params)
     wines = get_best_wines(params)
-    @recommendations = create_recommendations(params, stores, wines, 10) # number is for max amount
-
-    raise
+    @recommendations = create_recommendations(params, stores, wines, 10) # number is for max amount of recommendations
   end
 
   def map
     @inventory = Inventory.find(params[:id])
-    @markers = [{ lat: @inventory.latitude, lng: @inventory.longitude }]
+    @markers = [{ lat: @inventory.store.latitude, lng: @inventory.store.longitude }]
   end
 
   private
@@ -133,14 +131,12 @@ end
   #   end
   # end
 
-
   # index controller:
 
   # # passing the top five inventories to the index page
   # @top_five = top_five_wines.map do |wine|
   #  create_inventories(wine)
   # end
-
 
   # map method:
 
