@@ -1,14 +1,15 @@
 def scrape_wines
   page = 1
   colors = ["red-wine", "white-wine", "rose"] * 4
+  wine_count = 1
 
   colors.each do |color|
     url = "https://www.saq.com/en/products/wine/#{color}?p=#{page}"
     html_file = URI.open(url).read
     html_doc = Nokogiri::HTML(html_file)
 
-    html_doc.search(".product-item-info").each_with_index do |element, index|
-      puts "#{index}."
+    html_doc.search(".product-item-info").each_with_index do |element|
+      print "#{wine_count}."
       name = element.search(".product-item-name").text.strip.gsub(/\s+/, " ")
       print "#{name} - "
       price_float = element.search(".price")[0].text.strip.gsub(/[[:space:]]\$/, "").gsub(",", "").gsub("$", "").to_f
@@ -42,10 +43,11 @@ def scrape_wines
         alcohol: alcohol,
         saq_code: saq_code
       )
-      print 'done!'
+      puts 'done!'
+      wine_count += 1
     end
 
-    page += 50
-    puts "#{page} done"
+    puts "page #{page} done!"
+    page += 1
   end
 end
