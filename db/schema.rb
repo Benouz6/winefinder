@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_01_015448) do
+ActiveRecord::Schema.define(version: 2021_12_01_043230) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 2021_12_01_015448) do
     t.float "longitude"
     t.float "distance"
     t.string "address"
+    t.integer "saq_identifier"
   end
 
   create_table "wines", force: :cascade do |t|
@@ -67,6 +68,7 @@ ActiveRecord::Schema.define(version: 2021_12_01_015448) do
     t.string "price_currency", default: "CAD", null: false
     t.string "grapes"
     t.integer "alcohol"
+    t.integer "saq_code"
   end
 
   add_foreign_key "food_pairings", "foods"

@@ -56,8 +56,9 @@ def scrape_wines
       rating = rating_result.nil? ? 0 : rating_result.value.match(/\d+/)[0].to_i
       image_url = element.search(".product-image-photo").attribute('src').value
       link = element.search(".product-item-link").attribute('href').value
-      description = fetch_description(link)
+      saq_code = element.search(".saq-code").to_s.gsub(/\D/, '').to_i
 
+      description = fetch_description(link)
       region = fetch_region(link)
       country = fetch_country(link)
       grape = fetch_grape_variety(link)
@@ -74,9 +75,10 @@ def scrape_wines
         image_url: image_url,
         rating: rating,
         grapes: grape,
-        alcohol: alcohol
+        alcohol: alcohol,
+        saq_code: saq_code
       )
-      # fetch_inventories(saq_id)
+      # fetch_inventories(saq_id)   # deprecated feature, keep it commented out
     end
     page += 50
     puts "#{page} done"

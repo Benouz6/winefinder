@@ -13,6 +13,9 @@ class RecommendationsController < ApplicationController
     wines = get_best_wines(params)
 
     raise
+
+    @recommendations = create_recommendations(params, stores, wines)
+
   end
 
   def map
@@ -21,6 +24,35 @@ class RecommendationsController < ApplicationController
   end
 
   private
+
+  def get_closest_stores(params)
+    # get coordinates from user address
+    coords = Geocoder.search(params[:address]).first.coordinates
+    coordinates = { latitude: coords[0],
+                    longitude: coords[1] }
+
+    # get closest stores with SAQ API call
+    find_stores_url = "https://www.saq.com/en/store/locator/ajaxlist/?loaded=0&latitude=#{coordinates[:latitude]}&longitude=#{coordinates[:longitude]}&_=1638314430766" # thank god this is a thing, thanks SAQ devs!
+    json = URI.open(find_stores_url, { 'x-requested-with' => 'XMLHttpRequest' }).read
+    results = JSON.parse(json)['list']
+
+    # return list of store instances
+    create_stores(results)
+  end
+
+  def create_stores(results)
+    # creates store instances from the first 3 API call results and returns them in an array
+    results.first(3).map do |result|
+      Store.create(
+        name: result['name'],
+        address: "#{result['address1']}, #{result['city']}",
+        latitude: result['latitude'],
+        longitude: result['longitude'],
+        distance: result['distance'],
+        saq_identifier: result['identifier']
+      )
+    end
+  end
 
   def get_best_wines(params)
     top_wines = Wine
@@ -35,35 +67,16 @@ class RecommendationsController < ApplicationController
     return top_wines
   end
 
-  def get_closest_stores(params)
-    # get coordinates from user address
-    coords = Geocoder.search(params[:address]).first.coordinates
-    coordinates = { latitude: coords[0],
-                    longitude: coords[1] }
+  def create_recommendations(params, stores, wines)
 
-    # get closest stores with SAQ API call
-    find_stores_url = "https://www.saq.com/en/store/locator/ajaxlist/?loaded=0&latitude=#{coordinates[:latitude]}&longitude=#{coordinates[:longitude]}&_=1638314430766" # thank god for this, thanks SAQ
-    json = URI.open(find_stores_url, { 'x-requested-with' => 'XMLHttpRequest' }).read
-    results = JSON.parse(json)['list']
+    recommendations = []
 
-    # return list of store instances
-    create_stores(results)
-  end
+    stores.foreach do |store|
 
-  def create_stores(results)
-    # creates store instances from the API call results
-    results.first(3).map do |result|
-      store = Store.new
-      store.name = result['name']
-      store.address = "#{result['address1']}, #{result['city']}"
-      store.latitude = result['latitude']
-      store.longitude = result['longitude']
-      store.distance = result['distance']
-      store.save
-      store
+
     end
-  end
 
+  end
 end
 
   # deprecated code:
