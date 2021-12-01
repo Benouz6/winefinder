@@ -78,10 +78,6 @@ def scrape_wines
           grapes: grape,
           alcohol: alcohol
         )
-        if ENV['CREATE_JSON'] && Rails.env.development?
-          # File.delete(Rails.root + 'public/data_json/*.json')
-          fetch_inventories(saq_id)
-        end
       end
 
       if color == 'rose'
