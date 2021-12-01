@@ -13,14 +13,18 @@
 </div>
 
 <div class="wine-cards result-map-div">
+<div class = 'btn-article'>
   <%= link_to(recommendations_path(
-    address: params[:address],
-    color: params[:color],
-    food_id: params[:food_id],
-    price: params[:price],
-    quantity: params[:quantity]),
-    class: "btn btn-flat btn-article") do %>
-    Back To Results
-  <% end %>
+      address: params[:address],
+      color: params[:color],
+      food_id: params[:food_id],
+      price: params[:price],
+      quantity: params[:quantity]),
+      class: "btn btn-flat",
+      id: "results-button") do %>
+      Back To Results
+    <% end %>
+</div>
+
   <%= render 'shared/wine_card_result', inventory: @inventory %>
 </div>
