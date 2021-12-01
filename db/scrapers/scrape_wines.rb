@@ -37,48 +37,62 @@ def fetch_inventories(id)
 end
 
 def scrape_wines
-  page = 1
-  colors = ["red-wine", "white-wine", "rose"] * 4
+  colors = ["red-wine", "white-wine", "rose"]
 
   colors.each do |color|
-    url = "https://www.saq.com/en/products/wine/#{color}?p=#{page}"
-    html_file = URI.open(url).read
-    html_doc = Nokogiri::HTML(html_file)
+    page = 1
+    4.times do
+      p url = "https://www.saq.com/en/products/wine/#{color}?p=#{page}"
 
-    html_doc.search(".product-item-info").each do |element|
-      name = element.search(".product-item-name").text.strip.gsub(/\s+/, " ")
-      price_float = element.search(".price")[0].text.strip.gsub(/[[:space:]]\$/, "").gsub(",", "").gsub("$", "").to_f
-      price = (price_float*100).to_i
-      saq_id = element.search("[data-product-id]").attribute("data-product-id").value
-      temp_origin = element.search(".product-item-identity-format span").text.strip.gsub(/[|]/, "").split(/\b/)
-      # origin = temp_origin.reject(&:blank?).last
-      rating_result = element.search(".rating-result").attribute("title")
-      rating = rating_result.nil? ? 0 : rating_result.value.match(/\d+/)[0].to_i
-      image_url = element.search(".product-image-photo").attribute('src').value
-      link = element.search(".product-item-link").attribute('href').value
-      description = fetch_description(link)
+      html_file = URI.open(url).read
+      html_doc = Nokogiri::HTML(html_file)
 
-      region = fetch_region(link)
-      country = fetch_country(link)
-      grape = fetch_grape_variety(link)
-      alcohol = fetch_alcohol_rating(link)
-      origin = "#{region}, #{country}"
+      html_doc.search(".product-item-info").each do |element|
+        name = element.search(".product-item-name").text.strip.gsub(/\s+/, " ")
+        price_float = element.search(".price")[0].text.strip.gsub(/[[:space:]]\$/, "").gsub(",", "").gsub("$", "").to_f
+        price = (price_float*100).to_i
+        saq_id = element.search("[data-product-id]").attribute("data-product-id").value
+        temp_origin = element.search(".product-item-identity-format span").text.strip.gsub(/[|]/, "").split(/\b/)
+        # origin = temp_origin.reject(&:blank?).last
+        rating_result = element.search(".rating-result").attribute("title")
+        rating = rating_result.nil? ? 0 : rating_result.value.match(/\d+/)[0].to_i
+        image_url = element.search(".product-image-photo").attribute('src').value
+        link = element.search(".product-item-link").attribute('href').value
+        description = fetch_description(link)
 
-      Wine.create!(
-        name: name,
-        price_cents: price,
-        saq_id: saq_id,
-        origin: origin,
-        color: color,
-        description: description,
-        image_url: image_url,
-        rating: rating,
-        grapes: grape,
-        alcohol: alcohol
-      )
-      # fetch_inventories(saq_id)
+        region = fetch_region(link)
+        country = fetch_country(link)
+        grape = fetch_grape_variety(link)
+        alcohol = fetch_alcohol_rating(link)
+        origin = "#{region}, #{country}"
+
+        Wine.create!(
+          name: name,
+          price_cents: price,
+          saq_id: saq_id,
+          origin: origin,
+          color: color,
+          description: description,
+          image_url: image_url,
+          rating: rating,
+          grapes: grape,
+          alcohol: alcohol
+        )
+        if ENV['CREATE_JSON'] && Rails.env.development?
+          # File.delete(Rails.root + 'public/data_json/*.json')
+          fetch_inventories(saq_id)
+        end
+      end
+
+      if color == 'rose'
+        page += 2
+      elsif color == 'white-wine'
+        page += 20
+      else
+        page += 50
+      end
+
+      puts "#{page} done"
     end
-    page += 50
-    puts "#{page} done"
   end
 end
