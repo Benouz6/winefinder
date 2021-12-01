@@ -3,6 +3,7 @@ require 'open-uri'
 class RecommendationsController < ApplicationController
 
   def index
+
     # redirects back to form page in case address is missing (avoids crash!)
     if params[:address].blank?
       redirect_to controller: :pages, action: :search and return
@@ -66,6 +67,7 @@ class RecommendationsController < ApplicationController
   end
 
   def create_recommendations(params, stores, wines, max_recommendations)
+
     recommendations = []
 
     # cycles over each store in order to check bottle availabilities.
