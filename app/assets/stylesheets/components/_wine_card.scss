@@ -90,6 +90,16 @@
     }
   }
 
+  .origin-box {
+    width: 146.5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* number of lines to show */
+            line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+
   .price-box {
     width: 80px;
     height: 37px;
