@@ -2,37 +2,15 @@ require 'open-uri'
 
 class RecommendationsController < ApplicationController
 
-  def show
-    @wine = Wine.find(params[:id])
-  end
-
   def index
 
-    # get coordinates from user address
-    # test with 5333, avenue casgrain, montreal
-    address = params[:address]
-    coords = Geocoder.search(address).first.coordinates
-    latitude = coords[0]
-    longitude = coords[1]
-
-    # get closest stores with SAQ API call
-    url = "https://www.saq.com/en/store/locator/ajaxlist/?loaded=0&latitude=#{latitude}&longitude=#{longitude}&_=1638314430766"
-    json = URI.open(url, { 'x-requested-with' => 'XMLHttpRequest' }).read
-
-
-
-
-
-
-
+    stores = get_stores(params)
 
     raise
 
 
 
 
-
-    raise
     if params[:color].present?
       top_five_wines = Wine
         .includes(:foods)
@@ -85,6 +63,35 @@ class RecommendationsController < ApplicationController
       i.save
       return i
     end
+  end
+
+  private
+
+  def get_stores(params)
+    # get coordinates from user address
+    coords = Geocoder.search(params[:address]).first.coordinates
+    coordinates = { latitude: coords[0],
+                    longitude: coords[1] }
+
+    # get closest stores with SAQ API call
+    find_stores_url = "https://www.saq.com/en/store/locator/ajaxlist/?loaded=0&latitude=#{coordinates[:latitude]}&longitude=#{coordinates[:longitude]}&_=1638314430766"
+    json = URI.open(find_stores_url, { 'x-requested-with' => 'XMLHttpRequest' }).read
+    results = JSON.parse(json)['list']
+
+    # store API data in store instances
+    stores = results.first(3).map do |result|
+      store = Store.new
+      store.name = result['name']
+      store.address = "#{result['address1']}, #{result['city']}"
+      store.latitude = result['latitude']
+      store.longitude = result['longitude']
+      store.distance = result['distance']
+      store.save
+      store
+    end
+
+    # return list of 3 closest stores
+    return stores
   end
 
 end
