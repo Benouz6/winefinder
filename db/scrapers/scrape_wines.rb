@@ -50,11 +50,11 @@ def scrape_wines
       puts "page #{page} done!"
 
       if color == 'rose'
-      page += 2
+        page += 2
       elsif color == 'white-wine'
-      page += 20
+        page += 20
       else
-      page += 50
+        page += 50
       end
     end
   end
