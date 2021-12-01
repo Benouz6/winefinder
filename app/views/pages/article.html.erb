@@ -23,7 +23,7 @@
     <h2>Red Wine</h2>
     <p>In general, the more intense and tasty a dish is, the stronger a wine should be. To accompany game or lamb, for instance, a full-bodied wine will do. Lighter wines will harmonize with foods of similar intensity, such as white meats, poultry, pasta with tomato or rosée sauces, and fish, such as salmon. Medium-bodied wines are versatile. The more fruity ones will harmonize with pasta and meat sauce, and sausages; others, with a more woody, spicy profile, will bring out the best in grilled beef and semi-strong cheeses.</p>
     <div>
-      <%= link_to(pages_search_path, class: "btn btn-flat btn-article") do %>
+      <%= link_to(pages_search_path(color:"red"), class: "btn btn-flat btn-article") do %>
         Find Red Wine
       <% end %>
     </div>
@@ -33,7 +33,7 @@
     <h2>White Wine</h2>
     <p>Certain flavours round each other out to perfection. The successful food and wine pairer will consider the dominant flavour of the dish they are serving the white wine with. Light wines with good acidity, for instance, bring out the best in shellfish, shrimp and lean fish, while rounder, fat-textured, more intense wines harmonize with dishes in cream sauce, or baked Brie. Dishes seasoned with fruit, lemongrass or ginger, or slightly sweet dishes, will be enhanced with a wine with residual sugar.</p>
     <div>
-      <%= link_to(pages_search_path, class: "btn btn-flat btn-article") do %>
+      <%= link_to(pages_search_path(:color => "white"), class: "btn btn-flat btn-article") do %>
         Find White Wine
       <% end %>
     </div>
