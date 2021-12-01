@@ -1,3 +1,5 @@
+require 'open-uri'
+
 class RecommendationsController < ApplicationController
 
   def show
@@ -5,6 +7,32 @@ class RecommendationsController < ApplicationController
   end
 
   def index
+
+    # get coordinates from user address
+    # test with 5333, avenue casgrain, montreal
+    address = params[:address]
+    coords = Geocoder.search(address).first.coordinates
+    latitude = coords[0]
+    longitude = coords[1]
+
+    # get closest stores with SAQ API call
+    url = "https://www.saq.com/en/store/locator/ajaxlist/?loaded=0&latitude=#{latitude}&longitude=#{longitude}&_=1638314430766"
+    json = URI.open(url, { 'x-requested-with' => 'XMLHttpRequest' }).read
+
+
+
+
+
+
+
+
+    raise
+
+
+
+
+
+    raise
     if params[:color].present?
       top_five_wines = Wine
         .includes(:foods)

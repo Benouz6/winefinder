@@ -6,13 +6,17 @@
 <div class='container mt-2'>
   <form action="/recommendations" method="Get">
   <div class="form-group">
+    <%# Address %>
+    <label for="exampleFormControlInput1">Where is the bottle needed?</label>
+    <input type="address" name='address' class="form-control mb-2" id="exampleFormControlInput1" placeholder="5333, avenue casgrain, montreal">
+
     <%# Food type %>
     <label class='mb-1'>What will you have to eat?</label>
     <%= select_tag "food_id", options_from_collection_for_select(Food.all, "id", "name"), include_blank: false, selected: Food.first, class:"form-control mb-2" %>
 
     <%# budget %>
-    <label class='mb-1' for="exampleFormControlSelect1">What's your maximum budget?</label>
-    <select id="price" name="price" class="form-control mb-2" id="exampleFormControlSelect1">
+    <label class='mb-1' for="exampleFormControlSelect2">What's your maximum budget?</label>
+    <select id="price" name="price" class="form-control mb-2" id="exampleFormControlSelect2">
       <option>15</option>
       <option>20</option>
       <option>25</option>
@@ -22,17 +26,17 @@
       <option>45</option>
       <option>50</option>
     </select>
-    
-    <label for="exampleFormControlSelect1">What wine color are you looking for?</label>
-    <select id="color" name="color" class="form-control" id="exampleFormControlSelect1">
+
+    <label for="exampleFormControlSelect3">What wine color are you looking for?</label>
+    <select id="color" name="color" class="form-control" id="exampleFormControlSelect3">
       <option label="Red">red-wine</option>
       <option label="White">white-wine</option>
       <option label="Rosé">rose</option>
     </select>
-    
+
     <%# bottle count %>
-    <label class='mb-1' for="exampleFormControlSelect2">How many bottle do you want?</label>
-    <select id="quantity" name="quantity" class="form-control mb-2" id="exampleFormControlSelect2">
+    <label class='mb-1' for="exampleFormControlSelect4">How many bottle do you want?</label>
+    <select id="quantity" name="quantity" class="form-control mb-2" id="exampleFormControlSelect4">
       <option>1</option>
       <option>2</option>
       <option>3</option>
