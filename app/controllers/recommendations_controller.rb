@@ -55,17 +55,17 @@ class RecommendationsController < ApplicationController
   end
 
   def get_best_wines(params)
-    # top_wines = Wine
-    #             .includes(:foods)
-    #             .joins(food_pairings: :food)
-    #             .where(foods: { id: params[:food_id] })
-    #             .where(color: params[:color].downcase)
-    #             .where(price_cents: ..params[:price].to_i * 100)
-    #             .order(price_cents: :desc)
-    #             .order(rating: :desc)
-    #             .limit(20)
+    top_wines = Wine
+                .includes(:foods)
+                .joins(food_pairings: :food)
+                .where(foods: { id: params[:food_id] })
+                .where(color: params[:color].downcase)
+                .where(price_cents: ..params[:price].to_i * 100)
+                .order(price_cents: :desc)
+                .order(rating: :desc)
+                .limit(20)
 
-    top_wines = Wine.first(10) # used for testing
+    # top_wines = Wine.first(10) # used for testing
     return top_wines
   end
 
