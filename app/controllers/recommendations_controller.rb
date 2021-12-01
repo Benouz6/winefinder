@@ -12,9 +12,9 @@ class RecommendationsController < ApplicationController
     stores = get_closest_stores(params)
     wines = get_best_wines(params)
 
-    raise
-
     @recommendations = create_recommendations(params, stores, wines)
+
+    raise
 
   end
 
@@ -55,27 +55,56 @@ class RecommendationsController < ApplicationController
   end
 
   def get_best_wines(params)
-    top_wines = Wine
-                .includes(:foods)
-                .joins(food_pairings: :food)
-                .where(foods: { id: params[:food_id] })
-                .where(color: params[:color].downcase)
-                .where(price_cents: ..params[:price].to_i * 100)
-                .order(price_cents: :desc)
-                .order(rating: :desc)
-                .limit(5)
+    # top_wines = Wine
+    #             .includes(:foods)
+    #             .joins(food_pairings: :food)
+    #             .where(foods: { id: params[:food_id] })
+    #             .where(color: params[:color].downcase)
+    #             .where(price_cents: ..params[:price].to_i * 100)
+    #             .order(price_cents: :desc)
+    #             .order(rating: :desc)
+    #             .limit(20)
+
+    top_wines = Wine.first(10) # used for testing
     return top_wines
   end
 
   def create_recommendations(params, stores, wines)
-
     recommendations = []
 
-    stores.foreach do |store|
+    # cycles over each store in order to check bottle availabilities.
+    stores.each do |store|
+      left_over_wines = []
 
+      # goes over each wine bottle to check availability (bottle count)
+      wines.each do |wine|
+        url = "https://www.saq.com/en/storeinventory/productstores/ajaxlist/id/#{wine.saq_code}/store/#{store.saq_identifier}?_=1638306135901"
+        json = URI.open(url, { 'x-requested-with' => 'XMLHttpRequest' }).read
 
+        # validates that the store has some stock
+        if json != '[]'
+          bottle_count = JSON.parse(json).first['quantite'].to_i
+          # validates if there is adequate quantity
+          if params[:quantity].to_i <= bottle_count
+            # creates inventory instances and stores them in recommendations
+            recommendation = Inventory.new(
+              wine: wine,
+              store: store,
+              bottle_count: bottle_count
+            )
+            recommendation.save
+            recommendations << recommendation
+          else
+            left_over_wines << wine
+          end
+        else
+          left_over_wines << wine
+        end
+      end
+      # ensure next store that gets checked only gets the bottles with no stock in the previous store
+      wines = left_over_wines
     end
-
+    return recommendations
   end
 end
 
