@@ -4,7 +4,7 @@
 </div>
 
 <div class='container mt-2'>
-  <form action="/recommendations" method="Get">
+  <form action="/recommendations" method="Get" id="form1">
   <div class="form-group">
     <%# Address %>
     <label for="exampleFormControlInput1">Where is the bottle needed?</label>
@@ -46,10 +46,23 @@
       <option>7</option>
       <option>8</option>
       <option>9</option>
+    </select>
   </div>
+  </form>
+
+  <div class='btn-form'>
+    <button class="btn" id="results-button" type="submit" form="form1" value="Search">
+      Find Wine
+    </button>
+  </div>
+  <%# <div>
+    <input class="btn btn-form" type="submit button" value="Search">
+  </div> %>
 
   <%# Submit button %>
-  <div>
-    <input class="btn btn-secondary btn-form" type="submit" value="Search">
-  </div>
+  <button class="btn btn-form" type="button" style='opacity:80%;' disabled>
+    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+    Loading...
+  </button>
+
 </div>
