@@ -11,7 +11,7 @@ class RecommendationsController < ApplicationController
     # fetch required instances:
     stores = get_closest_stores(params)
     wines = get_best_wines(params)
-    @recommendations = create_recommendations(params, stores, wines)
+    @recommendations = create_recommendations(params, stores, wines, 10) # number is for max amount
 
     raise
   end
@@ -63,11 +63,11 @@ class RecommendationsController < ApplicationController
                 .order(rating: :desc)
                 .limit(20)
 
-    # top_wines = Wine.first(10) # used for testing
+    # top_wines = Wine.first(20) # used for testing
     return top_wines
   end
 
-  def create_recommendations(params, stores, wines)
+  def create_recommendations(params, stores, wines, max_recommendations)
     recommendations = []
 
     # cycles over each store in order to check bottle availabilities.
@@ -76,6 +76,11 @@ class RecommendationsController < ApplicationController
 
       # goes over each wine bottle to check availability (bottle count)
       wines.each do |wine|
+        # makes sure to not go over 10 recommendations
+        if recommendations.count == max_recommendations
+          return recommendations
+        end
+
         url = "https://www.saq.com/en/storeinventory/productstores/ajaxlist/id/#{wine.saq_code}/store/#{store.saq_identifier}?_=1638306135901"
         json = URI.open(url, { 'x-requested-with' => 'XMLHttpRequest' }).read
 
