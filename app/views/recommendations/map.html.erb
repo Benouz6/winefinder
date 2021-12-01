@@ -1,5 +1,5 @@
 <div class='title-box'>
-  <h1 style='font-size: 24px;'><%= @inventory.address %></h1>
+  <h1 style='font-size: 24px;'><%= @inventory.store.address %></h1>
 </div>
 
 <%# <%= link_to(pages_search_path, class: "btn btn-flat") do %>
@@ -14,6 +14,7 @@
 
 <div class="wine-cards result-map-div">
   <%= link_to(recommendations_path(
+    address: params[:address],
     color: params[:color],
     food_id: params[:food_id],
     price: params[:price],
