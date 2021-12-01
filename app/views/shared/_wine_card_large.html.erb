@@ -38,7 +38,7 @@
       <%# Grape variety %>
       <div class='d-flex flex-row'>
         <p class='tag'>Grapes:</p>
-        <p class='content'><%= inventory.wine.grapes %></p>
+        <p class='content'><%= inventory.wine.grapes == '' ? '-unavailable- ' : inventory.wine.grapes %></p>
       </div>
 
       <%# Alcohol level %>

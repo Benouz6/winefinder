@@ -4,7 +4,7 @@
 </div>
 
 <div class='container mt-2'>
-  <form action="/recommendations" method="Get">
+  <form action="/recommendations" method="Get" id="form1">
   <div class="form-group">
     <%# Address %>
     <label for="bottle_search">Where is the bottle needed? </label>
@@ -46,10 +46,13 @@
       <option>7</option>
       <option>8</option>
       <option>9</option>
+    </select>
   </div>
+  </form>
 
-  <%# Submit button %>
-  <div>
-    <input class="btn btn-secondary btn-form" type="submit" value="Search">
+  <div class='btn-form'>
+    <button class="btn" id="results-button" type="submit" form="form1" value="Search">
+      Find Wine
+    </button>
   </div>
 </div>
