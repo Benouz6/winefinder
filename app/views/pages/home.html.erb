@@ -1,7 +1,7 @@
 <div class="banner">
   <div class="container">
     <h1>WineFinder</h1>
-    <p id="typer"></p>
+    <p class='typer-field'>Let’s find the perfect wine <span id='typer'></span></p>
     <%= link_to(pages_search_path, class: "btn btn-flat") do %>
       Find Wine
     <% end %>
@@ -39,7 +39,7 @@
       // cursorClassName: 'type-writer-cursor'
   });
 
-  typewriter.typeString('Let’s find the perfect wine for your occasion.')
+  typewriter.typeString('for your occasion.')
       .pauseFor(2500)
       .deleteChars(18)
       .typeString('available at your nearest SAQ.')
