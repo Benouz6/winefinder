@@ -29,9 +29,9 @@
 
     <label for="exampleFormControlSelect3">What wine color are you looking for?</label>
     <select id="color" name="color" class="form-control" id="exampleFormControlSelect3">
-      <option label="Red">red-wine</option>
-      <option label="White">white-wine</option>
-      <option label="Rosé">rose</option>
+      <option label="Red" <%= params[:color]=="red" ? "selected" : "" %>>red-wine</option>
+      <option label="White" <%= params[:color]=="white" ? "selected" : "" %>>white-wine</option>
+      <option label="Rosé" <%= params[:color]=="rose" ? "selected" : "" %>>rose</option>
     </select>
 
     <%# bottle count %>
