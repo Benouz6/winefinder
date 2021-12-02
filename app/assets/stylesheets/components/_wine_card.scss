@@ -1,16 +1,98 @@
 // transitions
-.card-fade-out {
-  opacity: 0%;
-  transition: opacity, 0.2s;
+
+:root {
+    --heigth: 450px;
 }
 
-.card-fade-in {
-  opacity: 100%;
-  transition: opacity, 0.2s;
+.active-card {
+  display: flex;
+}
+
+.disabled-card {
+  display: none;
+}
+
+.fade-in {
+  animation: fadeIn 5s;
+  -webkit-animation: fadeIn 5s;
+  -moz-animation: fadeIn 5s;
+  -o-animation: fadeIn 5s;
+  -ms-animation: fadeIn 5s;
+}
+@keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-moz-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-webkit-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-o-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-ms-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+.fade-out {
+  animation: fadeOut 5s;
+  -webkit-animation: fadeOut 5s;
+  -moz-animation: fadeOut 5s;
+  -o-animation: fadeOut 5s;
+  -ms-animation: fadeOut 5s;
+}
+@keyframes fadeOut {
+  0% {opacity:1;}
+  100% {opacity:0;}
+}
+
+@-moz-keyframes fadeOut {
+  0% {opacity:1;}
+  100% {opacity:0;}
+}
+
+@-webkit-keyframes fadeOut {
+  0% {opacity:1;}
+  100% {opacity:0;}
+}
+
+@-o-keyframes fadeOut {
+  0% {opacity:1;}
+  100% {opacity:0;}
+}
+
+@-ms-keyframes fadeOut {
+  0% {opacity:1;}
+  100% {opacity:0;}
+}
+
+
+
+
+
+
+#card-fade-out {
+  opacity: 0%;
+  transition: opacity, 1s;
 }
 
 .card-invisible {
-  opacity: 0%
+  opacity: 0%;
+  transition: opacity, 1s;
+}
+
+.card-visible {
+  opacity: 100%
 }
 
 .wine-card-intermediate-small {
@@ -19,20 +101,15 @@
 }
 
 .wine-card-intermediate-full {
+  height: var(--heigth);
   transition: height, 3s;
-  height: 455px;
   overflow: hidden;
-
 }
 
-
-
-.active-card {
-  display: flex;
-}
-
-.disabled-card {
-  display: none;
+.wine-card-intermediate-fixed-position {
+  position: absolute;
+  top: 0px;
+  left: 0px;
 }
 
 
@@ -53,11 +130,6 @@
   }
 }
 
-.result-map-div {
-  position: absolute;
-  margin-top: -230px;
-}
-
 // shared
 .wine-card {
   margin: 17px;
@@ -66,7 +138,7 @@
   box-shadow: 1px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
 
-  > .img-box {
+  .img-box {
     background-color: $Grey;
   }
 
@@ -190,6 +262,11 @@
 
 
 // map page card
+
+.result-map-div {
+  position: absolute;
+  margin-top: -230px;
+}
 
 .result-card {
   height: 157px;
