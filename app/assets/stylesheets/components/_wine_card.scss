@@ -154,6 +154,12 @@
 
 // result cards
 
+.results-divider {
+  border-bottom: 1px solid $LightPink;
+  margin: 10px auto;
+  width: 50%;
+}
+
 .result-card {
   height: 157px;
   display: flex;

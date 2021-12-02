@@ -1,4 +1,4 @@
-.title-box {
+.page-title-box {
   background-color: $DarkBurgundy;
   padding: 10px;
   border-radius: 0px 0px 10px 10px;
@@ -10,4 +10,12 @@
     font-weight: bold;
     margin-bottom: 5px;
   }
+}
+
+.map-page-title {
+  position: absolute;
+  width: 100%;
+  z-index: 99;
+  height: min-content;
+
 }
