@@ -38,5 +38,5 @@ document.addEventListener('turbolinks:load', () => {
   toggleCardState();
   toggleBtnState();
   initMapbox();
-  initAutocomplete();
+  initAutocomplete(); console.log('hello');
 });
