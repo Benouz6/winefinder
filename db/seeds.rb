@@ -12,22 +12,16 @@ puts "deleting foods"
 Food.destroy_all
 
 
-puts "creating Beef"
-Food.create!(name: "Beef")
-puts "creating Pork"
-Food.create!(name: "Pork")
-puts "creating Poultry"
-Food.create!(name: "Poultry")
+puts "creating Seafood"
+Food.create!(name: "Seafood")
+puts "creating Meat"
+Food.create!(name: "Meat")
 puts "creating Cheese"
 Food.create!(name: "Cheese")
-puts "creating Fish"
-Food.create!(name: "Fish")
-puts "creating Vegetarian"
-Food.create!(name: "Vegetarian")
-puts "creating Mushrooms"
-Food.create!(name: "Mushrooms")
-puts "creating Spicy food"
-Food.create!(name: "Spicy food")
+puts "creating Vegetables"
+Food.create!(name: "Vegetables")
+puts "creating Deserts"
+Food.create!(name: "Deserts")
 
 puts "Scraping wines..."
 scrape_wines()
