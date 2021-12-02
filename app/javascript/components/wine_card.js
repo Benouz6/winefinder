@@ -8,8 +8,10 @@ const toggleCardState = () => {
   small_to_large(small_cards, large_cards, intermediate_cards);
   large_to_small(large_cards, small_cards, intermediate_cards);
 
+  let large_cards_sizes = [];
   large_cards.forEach((large_card) => {
-    console.log(large_card.clientHeight);
+    large_cards_sizes.push(large_card.clientHeight);
+    console.log(large_card.scrollHeight)
   });
 }
 
@@ -20,56 +22,36 @@ const small_to_large = (small_cards, large_cards, intermediate_cards) => {
       let large_card = large_cards[index];
       let small_card = event.currentTarget;
 
+      console.log(large_card.clientHeight);
 
-      // pop in large card in it's small invisible state
-
+      // activate large card in it's small invisible state
       intermediate_card.classList.remove('disabled-card');
       intermediate_card.classList.add('active-card');
 
 
       // fade out small card and fade in large card
       intermediate_card.classList.add('fade-in');
-      small_card.classList.add('fade-out')
+      small_card.classList.add('fade-out');
 
-
-
-      // event.currentTarget.id = "card-fade-out";
-      // setTimeout(function () {
-      //   // intermediate_card.classList.remove('card-invisible');
-      //   invermediate_card.id = '';
-      // }, 1000);
-
-      // intermediate_card.classList.add('card-fade-in')
-
-
-
-      // intermediate_card.classList.add('card-invisible');
-
-
-      // hide small card and remove absolute position from large card
+      // disable small card and remove absolute position from large one
       setTimeout(function () {
-        small_card.add('disabled-card');
-        small_card.remove('active-card');
-        small_card.remove("card-fade-out");
-        intermediate_card.classList.remove('wine-card-intermediate-fixed-position')
-      }, 5000);
+        small_card.classList.add('disabled-card');
+        small_card.classList.remove('active-card');
+        intermediate_card.classList.remove('wine-card-intermediate-fixed-position');
 
-      // grow large card
-      // intermediate_card.classList.remove('wine-card-intermediate-small')
-      // intermediate_card.classList.add('wine-card-intermediate-full')
+        // grow large card
+        console.log(large_card.clientHeight)
+        intermediate_card.classList.remove('wine-card-intermediate-small')
+        intermediate_card.classList.add('wine-card-intermediate-full')
+        setTimeout(function () {
+          intermediate_card.classList.remove('wine-card-intermediate-full')
+        }, 500);
+      }, 750);
 
-
-
+      // use actual card height
+      // intermediate_card.style.height = `large_card.clientHeight`;
+      // intermediate_card.style.setProperty('heigth', `${large_card.clientHeight}px`);
       // large_cards[index].classList.add('active-card');
-
-
-
-
-
-
-
-
-      // show large card
     });
   });
 }
