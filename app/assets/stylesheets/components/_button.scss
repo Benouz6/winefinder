@@ -27,10 +27,13 @@ font-weight: bold;
 
 #results-button {
   width: 170px;
-  margin-top: 20px;
-  margin-bottom: -25px;
 }
 
 #results-button:disabled {
   background-color: $Burgundy;
+}
+
+.map-return-btn {
+  margin-top: 20px;
+  margin-bottom: -25px;
 }
