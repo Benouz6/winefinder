@@ -1,10 +1,29 @@
 // transitions
 .card-fade-out {
   opacity: 0%;
-  transition: opacity, 0.1s;
-
+  transition: opacity, 0.2s;
 }
 
+.card-fade-in {
+  opacity: 100%;
+  transition: opacity, 0.2s;
+}
+
+.card-invisible {
+  opacity: 0%
+}
+
+.wine-card-intermediate-small {
+  height: 157px;
+  overflow: hidden;
+}
+
+.wine-card-intermediate-full {
+  transition: height, 3s;
+  height: 455px;
+  overflow: hidden;
+
+}
 
 
 
