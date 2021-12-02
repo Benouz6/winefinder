@@ -12,19 +12,19 @@
 
     <%# Food type %>
     <label class='mb-1'>What will you have to eat?</label>
-    <%= select_tag "food_id", options_from_collection_for_select(Food.all, "id", "name"), include_blank: false, selected: Food.first, class:"form-control mb-2" %>
+    <%= select_tag "food_id", options_from_collection_for_select(Food.all, "id", "name", @defaut_food_id), include_blank: false, class:"form-control mb-2" %>
 
     <%# budget %>
     <label class='mb-1' for="exampleFormControlSelect2">What's your maximum budget?</label>
     <select id="price" name="price" class="form-control mb-2" id="exampleFormControlSelect2">
-      <option>15</option>
-      <option>20</option>
-      <option>25</option>
-      <option>30</option>
-      <option>35</option>
-      <option>40</option>
-      <option>45</option>
-      <option>50</option>
+      <option label="15" <%= params[:price]=="15" ? "selected" : "" %> >15</option>
+      <option label="20" <%= params[:price]=="20" ? "selected" : "" %> >20</option>
+      <option label="25" <%= params[:price]=="25" ? "selected" : "" %> >25</option>
+      <option label="30" <%= params[:price]=="30" ? "selected" : "" %> >30</option>
+      <option label="35" <%= params[:price]=="35" ? "selected" : "" %> >35</option>
+      <option label="40" <%= params[:price]=="40" ? "selected" : "" %> >40</option>
+      <option label="45" <%= params[:price]=="45" ? "selected" : "" %> >45</option>
+      <option label="50" <%= params[:price]=="50" ? "selected" : "" %> >50</option>
     </select>
 
     <label for="exampleFormControlSelect3">What wine color are you looking for?</label>
@@ -37,15 +37,15 @@
     <%# bottle count %>
     <label class='mb-1' for="exampleFormControlSelect4">How many bottle do you want?</label>
     <select id="quantity" name="quantity" class="form-control mb-2" id="exampleFormControlSelect4">
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
-      <option>6</option>
-      <option>7</option>
-      <option>8</option>
-      <option>9</option>
+      <option label="1" <%= params[:price]=="1" ? "selected" : "" %> >1</option>
+      <option label="2" <%= params[:price]=="2" ? "selected" : "" %> >2</option>
+      <option label="3" <%= params[:price]=="3" ? "selected" : "" %> >3</option>
+      <option label="4" <%= params[:price]=="4" ? "selected" : "" %> >4</option>
+      <option label="5" <%= params[:price]=="5" ? "selected" : "" %> >5</option>
+      <option label="6" <%= params[:price]=="6" ? "selected" : "" %> >6</option>
+      <option label="7" <%= params[:price]=="7" ? "selected" : "" %> >7</option>
+      <option label="8" <%= params[:price]=="8" ? "selected" : "" %> >8</option>
+      <option label="9" <%= params[:price]=="9" ? "selected" : "" %> >9</option>
     </select>
   </div>
   </form>

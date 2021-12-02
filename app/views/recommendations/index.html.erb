@@ -6,7 +6,7 @@
   </div>
   <div class='row justify-content-center align-items-center'>
     <div id="button-form">
-      <%= link_to(pages_search_path, class: "btn btn-flat") do %>
+      <%= link_to(pages_search_path(:color => params[:color], :address => params[:address], :price => params[:price], :quantity => params[:quantity], :food_id => params[:food_id]), class: "btn btn-flat") do %>
         Edit Search
       <% end %>
     </div>
@@ -19,3 +19,6 @@
     <%= render 'shared/wine_card', inventory: inventory%>
   <% end %>
 </div>
+
+
+<%# http://www.winefinder.wine/recommendations?address=3332+Rue+Bernard+Ouest%2C+Montr%C3%A9al%2C+Qu%C3%A9bec%2C+Canada&food_id=1&price=15&color=white-wine&quantity=1 %>
