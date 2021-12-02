@@ -1,7 +1,7 @@
 /* Button */
 
 .btn {
-padding: 2px 15px;
+padding: 6px 15px;
 border: none;
 background: $Burgundy;
 box-shadow: 0.5px 2px 2px rgba(0, 0, 0, 0.25);
@@ -36,4 +36,14 @@ font-weight: bold;
 .map-return-btn {
   margin-top: 20px;
   margin-bottom: -25px;
+}
+
+// #button-form {
+//   background: $White !important;
+//   color: $DarkBurgundy !important;
+// }
+
+.btn-search {
+  background: white;
+  color: $DarkBurgundy !important;
 }
