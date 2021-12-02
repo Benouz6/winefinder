@@ -1,3 +1,29 @@
+// transitions
+.card-fade-out {
+  opacity: 0%;
+  transition: opacity, 0.1s;
+
+}
+
+
+
+
+.active-card {
+  display: flex;
+}
+
+.disabled-card {
+  display: none;
+}
+
+
+
+
+
+
+
+
+
 // cards container
 .wine-cards {
   justify-content: space-between;
@@ -143,16 +169,8 @@
   }
 }
 
-.active-card {
-  display: flex;
-}
 
-.disabled-card {
-  display: none;
-}
-
-
-// result cards
+// map page card
 
 .result-card {
   height: 157px;

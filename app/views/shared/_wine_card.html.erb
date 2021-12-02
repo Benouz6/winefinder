@@ -1,3 +1,6 @@
 <%# Displays small and large cards %>
-<%= render 'shared/wine_card_small', inventory: inventory %>
-<%= render 'shared/wine_card_large', inventory: inventory %>
+<div>
+  <%= render 'shared/wine_card_large', inventory: inventory %>
+  <div class = 'wine_card_intermediate'></div>
+  <%= render 'shared/wine_card_small', inventory: inventory %>
+</div>
