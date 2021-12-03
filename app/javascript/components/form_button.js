@@ -9,7 +9,7 @@ const toggleBtnState = () => {
       const target = event.currentTarget
       setTimeout(function () {
         target.disabled = true;
-      }, 200);
+      }, 50);
     });
   }
 }
