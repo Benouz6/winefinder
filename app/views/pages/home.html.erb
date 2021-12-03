@@ -31,21 +31,25 @@
 </div>
 
 <script>
-  const app = document.getElementById('typer');
+  // const app = document.getElementById('typer');
 
-  const typewriter = new Typewriter(app, {
+  // const typewriter = new Typewriter(document.getElementById('typer'), {
+  //     loop: true,
+  //     delay: 75,
+  //     // cursorClassName: 'type-writer-cursor'
+  // });
+
+  new Typewriter(document.getElementById('typer'), {
       loop: true,
       delay: 75,
       // cursorClassName: 'type-writer-cursor'
-  });
-
-  typewriter.typeString('for your occasion.')
-      .pauseFor(2500)
-      .deleteChars(18)
-      .typeString('available at your nearest SAQ.')
-      .pauseFor(2500)
-      // .deleteChars(7)
-      // .typeString('<strong>altered!</strong>')
-      // .pauseFor(2500)
-      .start();
+  }).typeString('for your occasion.')
+    .pauseFor(2500)
+    .deleteChars(18)
+    .typeString('available at your nearest SAQ.')
+    .pauseFor(2500)
+    // .deleteChars(7)
+    // .typeString('<strong>altered!</strong>')
+    // .pauseFor(2500)
+    .start();
 </script>
