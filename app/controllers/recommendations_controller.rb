@@ -67,7 +67,7 @@ class RecommendationsController < ApplicationController
   end
 
   def create_recommendations(params, stores, wines, max_recommendations)
-
+    # creates recommendations based on live store inventories
     recommendations = []
 
     # cycles over each store in order to check bottle availabilities.
@@ -110,43 +110,3 @@ class RecommendationsController < ApplicationController
     return recommendations
   end
 end
-
-  # deprecated code:
-
-  # methods:
-
-  # def create_inventories(wine)
-  #   file = "#{Rails.public_path}/data_json/#{wine.saq_id}.json"
-  #   avails = JSON.parse(File.open(file).read)['list']
-  #   avails.first(3).each do |avail|
-  #     i = Inventory.new(
-  #       bottle_count: avail["qty"],
-  #       longitude: avail["longitude"],
-  #       latitude: avail["latitude"],
-  #       name_saq: avail["name"],
-  #       address: avail["address1"],
-  #       distance: avail["distance"]
-  #     )
-  #     i.wine = wine
-  #     i.save
-  #     return i
-  #   end
-  # end
-
-  # index controller:
-
-  # # passing the top five inventories to the index page
-  # @top_five = top_five_wines.map do |wine|
-  #  create_inventories(wine)
-  # end
-
-  # map method:
-
-    # Multiple markers:
-    # @wine = @inventory.wine
-    # @markers = @wine.inventories.map do |wine|
-    #   {
-    #     lat: wine.latitude,
-    #     lng: wine.longitude
-    #   }
-    # end
