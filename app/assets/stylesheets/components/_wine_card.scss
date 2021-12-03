@@ -8,11 +8,6 @@
   }
 }
 
-.result-map-div {
-  position: absolute;
-  margin-top: -230px;
-}
-
 // shared
 .wine-card {
   margin: 17px;
@@ -21,7 +16,7 @@
   box-shadow: 1px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
 
-  > .img-box {
+  .img-box {
     background-color: $Grey;
   }
 
@@ -139,9 +134,12 @@
 
   .find-box {
     padding: 9px;
-    background-color: $Grey
+    background-color: $Grey;
+    border-radius: 0px 0px 10px 10px;
   }
 }
+
+// transitions
 
 .active-card {
   display: flex;
@@ -151,8 +149,100 @@
   display: none;
 }
 
+.fade-in {
+  animation: fadeIn 0.35s;
+  -webkit-animation: fadeIn 0.35s;
+  -moz-animation: fadeIn 0.35s;
+  -o-animation: fadeIn 0.35s;
+  -ms-animation: fadeIn 0.35s;
+}
+@keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
 
-// result cards
+@-moz-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-webkit-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-o-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-ms-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+.fade-out {
+  animation: fadeOut 0.35s;
+  -webkit-animation: fadeOut 0.35s;
+  -moz-animation: fadeOut 0.35s;
+  -o-animation: fadeOut 0.35s;
+  -ms-animation: fadeOut 0.35s;
+}
+@keyframes fadeOut {
+  0% {opacity:1;}
+  100% {opacity:0;}
+}
+
+@-moz-keyframes fadeOut {
+  0% {opacity:1;}
+  100% {opacity:0;}
+}
+
+@-webkit-keyframes fadeOut {
+  0% {opacity:1;}
+  100% {opacity:0;}
+}
+
+@-o-keyframes fadeOut {
+  0% {opacity:1;}
+  100% {opacity:0;}
+}
+
+@-ms-keyframes fadeOut {
+  0% {opacity:1;}
+  100% {opacity:0;}
+}
+
+.wine-card-intermediate-small {
+  height: 157px;
+  transition-property: height;
+  transition-duration: 0.4s;
+  transition-timing-function: ease-out;
+  overflow: hidden;
+}
+
+.wine-card-intermediate-full {
+  height: 433px;
+  transition-property: height;
+  transition-duration: 0.4s;
+  transition-timing-function: ease-in;
+  overflow: hidden;
+}
+
+.wine-card-intermediate-fixed-position {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+
+
+// map page card
+
+.result-map-div {
+  position: absolute;
+  margin-top: -230px;
+}
 
 .results-divider {
   border-bottom: 1px solid $LightPink;
