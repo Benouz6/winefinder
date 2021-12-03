@@ -13,9 +13,16 @@
   </div>
 </div>
 
-<%# wine cards %>
-<div class='d-flex flex-column wine-cards' >
-  <% @recommendations.each do |inventory| %>
-    <%= render 'shared/wine_card', inventory: inventory%>
-  <% end %>
-</div>
+<% if @recommendations.empty? %>
+  <%# display empty results message %>
+  <div style='padding: 10px; margin:20px 0px;'>
+    <h1 style='font-size: 32px;'>Whoops! Seems like we couldn't find anything matching your criteria.</h1>
+  </div>
+<% else %>
+  <%# display wine cards %>
+  <div class='d-flex flex-column wine-cards' >
+    <% @recommendations.each do |inventory| %>
+      <%= render 'shared/wine_card', inventory: inventory%>
+    <% end %>
+  </div>
+<% end %>
