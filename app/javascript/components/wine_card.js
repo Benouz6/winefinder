@@ -31,10 +31,10 @@ const small_to_large = (small_cards, large_cards) => {
         large_card.classList.remove('wine-card-intermediate-fixed-position');
 
         // grow large card
-        large_card.classList.remove('wine-card-intermediate-small')
-        large_card.classList.add('wine-card-intermediate-full')
+        large_card.classList.remove('wine-card-intermediate-small');
+        large_card.classList.add('wine-card-intermediate-full');
         setTimeout(function () {
-          large_card.classList.remove('wine-card-intermediate-full')
+          large_card.classList.remove('wine-card-intermediate-full');
         }, 400);
       }, 350);
     });
@@ -48,10 +48,10 @@ const large_to_small = (large_cards, small_cards) => {
       const small_card = small_cards[index]
 
       // shrink large card
-      large_card.classList.add('wine-card-intermediate-full')
+      large_card.classList.add('wine-card-intermediate-full');
       setTimeout(function () {
-        large_card.classList.remove('wine-card-intermediate-full')
-        large_card.classList.add('wine-card-intermediate-small')
+        large_card.classList.remove('wine-card-intermediate-full');
+        large_card.classList.add('wine-card-intermediate-small');
 
         setTimeout(function () {
           // enable small card and add absolute position to large one
