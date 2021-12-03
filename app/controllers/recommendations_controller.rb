@@ -2,20 +2,6 @@ require 'open-uri'
 
 class RecommendationsController < ApplicationController
 
-  def test
-    store = Store.first
-    wine = Wine.first
-    inventory = Inventory.new
-    inventory.bottle_count = 2
-    inventory.store = store
-    inventory.wine = wine
-    inventory.save
-
-    @inventory = inventory
-  end
-
-
-
   def index
 
     # redirects back to form page in case address is missing (avoids crash!)

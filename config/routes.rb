@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   get 'pages/search', to: 'pages#search'
   get 'pages/article', to: 'pages#article'
 
-  get 'recommendations/test', to: 'recommendations#test', as: :test
   get 'recommendations/:id/map', to: 'recommendations#map', as: :map
 
   resources :recommendations, only: [:index, :show]
