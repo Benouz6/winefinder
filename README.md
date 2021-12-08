@@ -1,5 +1,5 @@
 # This is Winefinder
-
+The amazing app helping you to find the perfect bottle for your occasion 
 ![croped_wine](https://user-images.githubusercontent.com/87625932/145219152-2e64c61a-3fad-4454-97be-535640aa019a.jpg)
 
 ## Langages used
